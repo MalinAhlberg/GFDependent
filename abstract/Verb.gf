@@ -16,18 +16,18 @@ abstract Verb = Cat ** {
     ComplVA  : VA  -> AP -> VP ;  -- they become red
 
     SlashV2a : V2        -> VPSlash ;  -- love (it)
---    Slash2V3 : V3  -> NP -> VPSlash ;  -- give it (to her)
---    Slash3V3 : V3  -> NP -> VPSlash ;  -- give (it) to her
+    Slash2V3 : V3  -> NP -> VPSlash ;  -- give it (to her)
+    Slash3V3 : V3  -> NP -> VPSlash ;  -- give (it) to her
 
     SlashV2V : V2V -> VP -> VPSlash ;  -- beg (her) to go
     SlashV2S : V2S -> S  -> VPSlash ;  -- answer (to him) that it is good
     SlashV2Q : V2Q -> QS -> VPSlash ;  -- ask (him) who came
     SlashV2A : V2A -> AP -> VPSlash ;  -- paint (it) red
 
---    ComplSlash : VPSlash -> NP -> VP ; -- love it
+    ComplSlash : VPSlash -> NP -> VP ; -- love it
 
     SlashVV    : VV  -> VPSlash -> VPSlash ;       -- want to buy
---    SlashV2VNP : V2V -> NP -> VPSlash -> VPSlash ; -- beg me to buy
+    SlashV2VNP : V2V -> NP -> VPSlash -> VPSlash ; -- beg me to buy
 
 --2 Other ways of forming verb phrases
 
@@ -69,7 +69,7 @@ abstract Verb = Cat ** {
 -- Adjectival phrases, noun phrases, and adverbs can be used.
 
     CompAP   : AP  -> Comp ;            -- (be) small
-    ---CompNP   : NP  -> Comp ;            -- (be) the man
+    CompNP   : NP  -> Comp ;            -- (be) the man
     CompAdv  : Adv -> Comp ;            -- (be) here
     CompCN   : CN  -> Comp ;            -- (be) a man/men
 
