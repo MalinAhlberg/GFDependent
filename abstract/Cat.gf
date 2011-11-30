@@ -76,15 +76,17 @@ abstract Cat = Common ** {
 -- as defined in [Noun Noun.html].
 
     CN ;     -- common noun (without determiner)    e.g. "red house"
-    NP ;     -- noun phrase (subject or object)     e.g. "the red house"
+    NP NPType ;     -- noun phrase (subject or object)     e.g. "the red house"
     Pron ;   -- personal pronoun                    e.g. "she"
-    Det ;    -- determiner phrase                   e.g. "those seven"
+    Det  NPType;    -- determiner phrase                   e.g. "those seven"
     Predet ; -- predeterminer (prefixed Quant)      e.g. "all"
-    Quant ;  -- quantifier ('nucleus' of Det)       e.g. "this/these"
+    Quant NPType ;  -- quantifier ('nucleus' of Det)       e.g. "this/these"
     Num ;    -- number determining element          e.g. "seven"
     Card ;   -- cardinal number                     e.g. "seven"
     Ord ;    -- ordinal number (used in Det)        e.g. "seventh"
 
+    Subject : NPType ;
+    Object : NPType ;
 --2 Numerals
 
 -- Constructed in [Numeral Numeral.html].
