@@ -10,7 +10,7 @@ abstract Sentence = Cat ** {
 -- $UseCl$ function below.
 
   data
-    PredVP    : NP -> VP -> Cl ;         -- John walks
+    PredVP    : NP Subject -> VP -> Cl ;         -- John walks
 
 -- Using an embedded sentence as a subject is treated separately.
 -- This can be overgenerating. E.g. "whether you go" as subject
@@ -28,10 +28,10 @@ abstract Sentence = Cat ** {
 -- the style of CCG.
 -- *Note* the set is not complete and lacks e.g. verbs with more than 2 places.
 
-    SlashVP   : NP -> VPSlash -> ClSlash ;      -- (whom) he sees
-    AdvSlash  : ClSlash -> Adv -> ClSlash ;     -- (whom) he sees today
+    SlashVP   : NP Subject -> VPSlash -> ClSlash ;      -- (whom) he sees
+    AdvSlash  : (a : Boolean) -> ClSlash -> Adv a -> ClSlash ;     -- (whom) he sees today 
     SlashPrep : Cl -> Prep -> ClSlash ;         -- (with whom) he walks 
-    SlashVS   : NP -> VS -> SSlash -> ClSlash ; -- (whom) she says that he loves
+    SlashVS   : NP Subject -> VS -> SSlash -> ClSlash ; -- (whom) she says that he loves
 
 --2 Imperatives
 
@@ -65,8 +65,8 @@ abstract Sentence = Cat ** {
 -- An adverb can be added to the beginning of a sentence, either with comma ("externally")
 -- or without:
 
-    AdvS     : Adv -> S  -> S ;            -- then I will go home
-    ExtAdvS  : Adv -> S  -> S ;            -- next week, I will go home
+    AdvS     : Adv Subject -> S  -> S ;            -- then I will go home
+    ExtAdvS  : Adv Subject -> S  -> S ;            -- next week, I will go home
 
 -- This covers subjunctive clauses, but they can also be added to the end.
 

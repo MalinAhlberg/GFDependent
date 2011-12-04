@@ -7,7 +7,7 @@
 abstract Extra = Cat ** {
 
   fun
-    GenNP       : NP -> Quant ;       -- this man's
+    GenNP       : (a : Boolean) -> NP a -> Quant a;       -- this man's
     GenIP       : IP -> IQuant ;      -- whose
     GenRP       : Num -> CN -> RP ;   -- whose car
     ComplBareVS : VS -> S -> VP ;     -- know you go
@@ -36,18 +36,18 @@ abstract Extra = Cat ** {
   fun
     MkVPS : Temp -> Pol -> VP -> VPS ;
     ConjVPS : Conj -> [VPS] -> VPS ;
-    PredVPS : NP -> VPS -> S ;
+    PredVPS : NP Subject -> VPS -> S ;
 
   -- 9/4/2010
 
   fun
     ProDrop : Pron -> Pron ;  -- unstressed subject pronoun becomes []: "(io) sono stanco"
-    ICompAP : AP -> IComp ;   -- "how old"
-    IAdvAdv : Adv -> IAdv ;   -- "how often"
+    ICompAP : AP Subject -> IComp ;   -- "how old"
+    IAdvAdv : Adv Subject -> IAdv ;   -- "how often"
 
     CompIQuant : IQuant -> IComp ; -- which (is it) [agreement to NP]
 
-    PrepCN : Prep -> CN -> Adv ;   -- by accident [Prep + CN without article]
+    PrepCN : Prep -> CN -> Adv Subject ;   -- by accident [Prep + CN without article]
 
   -- fronted/focal constructions, only for main clauses
 
@@ -55,18 +55,18 @@ abstract Extra = Cat ** {
     Foc ;
 
   fun
-    FocObj : NP  -> ClSlash -> Foc ;   -- her I love
-    FocAdv : Adv -> Cl      -> Foc ;   -- today I will sleep
-    FocAdV : AdV -> Cl      -> Foc ;   -- never will I sleep
-    FocAP  : AP  -> NP      -> Foc ;   -- green was the tree
-    FocNeg : Cl             -> Foc ;   -- not is he here
-    FocVP  : VP  -> NP      -> Foc ;   -- love her I do
-    FocVV  : VV -> VP -> NP -> Foc ;   -- to love her I want
+    FocObj : (a : Boolean) ->  NP a -> ClSlash -> Foc ;   -- her I love
+    FocAdv : (a : Boolean) ->  Adv a -> Cl     -> Foc ;   -- today I will sleep
+    FocAdV : (a : Boolean) ->  AdV -> Cl       -> Foc ;   -- never will I sleep
+    FocAP  : (a,b : Boolean) ->  AP a -> NP b  -> Foc ;   -- green was the tree
+    FocNeg : Cl            -> Foc ;   -- not is he here
+    FocVP  : VP       -> NP Subject  -> Foc ;   -- love her I do
+    FocVV  : VV -> VP -> NP Subject  -> Foc ;   -- to love her I want
     
     UseFoc : Temp -> Pol -> Foc -> Utt ;
 
   fun
-    PartVP : VP -> AP ; -- (the man) looking at Mary
+    PartVP : VP -> AP Subject ; -- (the man) looking at Mary --obs! Object?
     EmbedPresPart : VP -> SC ; -- looking at Mary (is fun)
 
 -- this is a generalization of Verb.PassV2 and should replace it in the future.

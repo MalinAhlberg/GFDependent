@@ -18,10 +18,22 @@
 -- are defined on $Conjunction$ and only used locally there.
 
 
-abstract Cat = Common ** {
+abstract Cat = Common -[Adv] ** {
 
   cat
 
+  Boolean ;
+  data 
+    Subject : Boolean ;
+    Object : Boolean ;
+  fun 
+    isObj : Boolean -> Boolean -> Boolean ;
+    def isObj _      Object = Object ; 
+    def isObj Object _      = Object ; 
+    def isObj _       _     = Subject ; 
+
+ cat
+  Adv Boolean ;
 --2 Sentences and clauses
 
 -- Constructed in [Sentence Sentence.html], and also in
@@ -64,7 +76,7 @@ abstract Cat = Common ** {
 
 -- Constructed in [Adjective Adjective.html].
 
-    AP ;    -- adjectival phrase                   e.g. "very warm"
+    AP Boolean ;    -- adjectival phrase                   e.g. "very warm"
 
 --2 Nouns and noun phrases
 
@@ -76,17 +88,15 @@ abstract Cat = Common ** {
 -- as defined in [Noun Noun.html].
 
     CN ;     -- common noun (without determiner)    e.g. "red house"
-    NP NPType ;     -- noun phrase (subject or object)     e.g. "the red house"
+    NP Boolean ;     -- noun phrase (subject or object)     e.g. "the red house"
     Pron ;   -- personal pronoun                    e.g. "she"
-    Det  NPType;    -- determiner phrase                   e.g. "those seven"
+    Det  Boolean;    -- determiner phrase                   e.g. "those seven"
     Predet ; -- predeterminer (prefixed Quant)      e.g. "all"
-    Quant NPType ;  -- quantifier ('nucleus' of Det)       e.g. "this/these"
+    Quant Boolean ;  -- quantifier ('nucleus' of Det)       e.g. "this/these"
     Num ;    -- number determining element          e.g. "seven"
     Card ;   -- cardinal number                     e.g. "seven"
     Ord ;    -- ordinal number (used in Det)        e.g. "seventh"
 
-    Subject : NPType ;
-    Object : NPType ;
 --2 Numerals
 
 -- Constructed in [Numeral Numeral.html].

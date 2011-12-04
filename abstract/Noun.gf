@@ -12,26 +12,26 @@ abstract Noun = Cat ** {
 --
 --
   fun
-    DetCN   : Det -> CN -> NP ;   -- the man
-    UsePN   : PN -> NP ;          -- John
-    UsePron : Pron -> NP ;        -- he
+    DetCN   : (a : Boolean) -> Det a -> CN -> NP a ;   -- the man
+    UsePN   : PN -> NP Subject ;          -- John
+    UsePron : Pron -> NP Subject ;        -- he
 
 -- Pronouns are defined in the module [``Structural`` Structural.html].
 
 -- A noun phrase already formed can be modified by a $Predet$erminer.
 
-    PredetNP : Predet -> NP -> NP; -- only the man 
+    PredetNP : (a : Boolean) -> Predet -> NP a -> NP a; -- only the man 
 
 -- A noun phrase can also be postmodified by the past participle of a
 -- verb, by an adverb, or by a relative clause
 
-    PPartNP : NP -> V2  -> NP ;    -- the man seen
-    AdvNP   : NP -> Adv -> NP ;    -- Paris today
-    RelNP   : NP -> RS  -> NP ;    -- Paris, which is here
+    PPartNP :  (a : Boolean) -> NP a -> V2  -> NP a ;    -- the man seen
+    AdvNP   :  (a,b : Boolean) -> NP a -> Adv b -> NP (isObj a b) ;    -- Paris today
+    RelNP   :  (a : Boolean) -> NP a -> RS  -> NP a ;    -- Paris, which is here
 
 -- Determiners can form noun phrases directly.
 
-    DetNP   : Det -> NP ;  -- these five
+    DetNP   : (a : Boolean) -> Det a -> NP a ;  -- these five
 
 
 --2 Determiners
@@ -39,8 +39,8 @@ abstract Noun = Cat ** {
 -- The determiner has a fine-grained structure, in which a 'nucleus'
 -- quantifier and an optional numeral can be discerned.
 
-    DetQuant    : Quant -> Num ->        Det ;  -- these five
-    DetQuantOrd : Quant -> Num -> Ord -> Det ;  -- these five best
+    DetQuant    : (a : Boolean) -> Quant a -> Num ->        Det a ;  -- these five
+    DetQuantOrd : (a : Boolean) -> Quant a -> Num -> Ord -> Det a ;  -- these five best
 
 -- Whether the resulting determiner is singular or plural depends on the
 -- cardinal.
@@ -77,20 +77,20 @@ abstract Noun = Cat ** {
 -- neatly distinct words (Spanish "un, unos ; el, los") but also without
 -- any particular word (Finnish; Swedish definites).
 
-    IndefArt   : Quant ;
-    DefArt     : Quant ;
+    IndefArt   : Quant Subject ;
+    DefArt     : Quant Subject ;
 
 -- Nouns can be used without an article as mass nouns. The resource does
 -- not distinguish mass nouns from other common nouns, which can result
 -- in semantically odd expressions.
 
-    MassNP     : CN -> NP ;            -- (beer)
+    MassNP     : CN -> NP Subject ;            -- (beer)
 
 -- Pronouns have possessive forms. Genitives of other kinds
 -- of noun phrases are not given here, since they are not possible
 -- in e.g. Romance languages. They can be found in $Extra$ modules.
 
-    PossPron : Pron -> Quant ;    -- my (house)
+    PossPron : Pron -> Quant Subject ;    -- my (house)
 
 -- Other determiners are defined in [Structural Structural.html].
 
@@ -104,8 +104,8 @@ abstract Noun = Cat ** {
 
 -- Relational nouns take one or two arguments.
 
-    ComplN2 : N2 -> NP -> CN ;    -- mother of the king
-    ComplN3 : N3 -> NP -> N2 ;    -- distance from this city (to Paris)
+    ComplN2 : (a : Boolean ) -> N2 -> NP a -> CN ;    -- mother of the king                  --obs! Object??
+    ComplN3 : (a : Boolean ) -> N3 -> NP a -> N2 ;    -- distance from this city (to Paris)
 
 -- Relational nouns can also be used without their arguments.
 -- The semantics is typically derivative of the relational meaning.
@@ -118,9 +118,9 @@ abstract Noun = Cat ** {
 -- (the last rule will give rise to many 'PP attachment' ambiguities
 -- when used in connection with verb phrases).
 
-    AdjCN   : AP -> CN  -> CN ;   -- big house
+    AdjCN   : AP Subject -> CN  -> CN ;   -- big house
     RelCN   : CN -> RS  -> CN ;   -- house that John bought
-    AdvCN   : CN -> Adv -> CN ;   -- house on the hill
+    AdvCN   : CN -> Adv Subject -> CN ;   -- house on the hill
 
 -- Nouns can also be modified by embedded sentences and questions.
 -- For some nouns this makes little sense, but we leave this for applications
@@ -132,7 +132,7 @@ abstract Noun = Cat ** {
 
 -- This is certainly overgenerating.
 
-    ApposCN : CN -> NP -> CN ;    -- city Paris (, numbers x and y)
+    ApposCN : CN -> NP Subject -> CN ;    -- city Paris (, numbers x and y)  --obs! Object??
 
 
 }

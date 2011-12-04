@@ -13,21 +13,21 @@ abstract Verb = Cat ** {
     ComplVV  : VV  -> VP -> VP ;  -- want to run
     ComplVS  : VS  -> S  -> VP ;  -- say that she runs
     ComplVQ  : VQ  -> QS -> VP ;  -- wonder who runs
-    ComplVA  : VA  -> AP -> VP ;  -- they become red
+    ComplVA  : (a : Boolean ) -> VA  -> AP a -> VP ;  -- they become red
 
     SlashV2a : V2        -> VPSlash ;  -- love (it)
---    Slash2V3 : V3  -> NP -> VPSlash ;  -- give it (to her)
---    Slash3V3 : V3  -> NP -> VPSlash ;  -- give (it) to her
+    Slash2V3 : (a : Boolean) -> V3  -> NP a -> VPSlash ;  -- give it (to her)
+    Slash3V3 : (a : Boolean) -> V3  -> NP a -> VPSlash ;  -- give (it) to her
 
     SlashV2V : V2V -> VP -> VPSlash ;  -- beg (her) to go
     SlashV2S : V2S -> S  -> VPSlash ;  -- answer (to him) that it is good
     SlashV2Q : V2Q -> QS -> VPSlash ;  -- ask (him) who came
-    SlashV2A : V2A -> AP -> VPSlash ;  -- paint (it) red
+    SlashV2A : (a : Boolean) -> V2A -> AP a -> VPSlash ;  -- paint (it) red
 
---    ComplSlash : VPSlash -> NP -> VP ; -- love it
+    ComplSlash : (a : Boolean) -> VPSlash -> NP a -> VP ; -- love it
 
     SlashVV    : VV  -> VPSlash -> VPSlash ;       -- want to buy
---    SlashV2VNP : V2V -> NP -> VPSlash -> VPSlash ; -- beg me to buy
+    SlashV2VNP : (a : Boolean) -> V2V -> NP a -> VPSlash -> VPSlash ; -- beg me to buy
 
 --2 Other ways of forming verb phrases
 
@@ -53,10 +53,10 @@ abstract Verb = Cat ** {
 -- a distinction between adverbs that are attached in the end
 -- vs. next to (or before) the verb.
 
-    AdvVP    : VP -> Adv -> VP ;        -- sleep here
+    AdvVP    : (a : Boolean) -> VP -> Adv a -> VP ;        -- sleep here
     AdVVP    : AdV -> VP -> VP ;        -- always sleep
 
-    AdvVPSlash : VPSlash -> Adv -> VPSlash ;  -- use (it) here
+    AdvVPSlash : (a : Boolean) -> VPSlash -> Adv a -> VPSlash ;  -- use (it) here
     AdVVPSlash : AdV -> VPSlash -> VPSlash ;  -- always use (it)
    
 
@@ -68,9 +68,9 @@ abstract Verb = Cat ** {
 
 -- Adjectival phrases, noun phrases, and adverbs can be used.
 
-    CompAP   : AP  -> Comp ;            -- (be) small
-    ---CompNP   : NP  -> Comp ;            -- (be) the man
-    CompAdv  : Adv -> Comp ;            -- (be) here
+    CompAP   : (a : Boolean) -> AP a -> Comp ;            -- (be) small
+    CompNP   : (a : Boolean) -> NP a  -> Comp ;            -- (be) the man
+    CompAdv  : (a : Boolean) -> Adv a -> Comp ;            -- (be) here
     CompCN   : CN  -> Comp ;            -- (be) a man/men
 
 -- Copula alone

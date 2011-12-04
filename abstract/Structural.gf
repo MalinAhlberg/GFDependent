@@ -34,18 +34,18 @@ abstract Structural = Cat ** {
   during_Prep : Prep ;
   either7or_DConj : Conj ; -- either...or
 ---b  either7or_DConj : DConj ;
-  every_Det : Det ;
-  everybody_NP : NP ;  -- everybody
-  everything_NP : NP ;
-  everywhere_Adv : Adv ;
+  every_Det : Det Subject ;
+  everybody_NP : NP Subject ;  -- everybody
+  everything_NP : NP Subject ;
+  everywhere_Adv : Adv Subject ;
 ---  first_Ord : Ord ; DEPRECATED
-  few_Det : Det ;
+  few_Det : Det Subject ;
   for_Prep : Prep ;
   from_Prep : Prep ;
   he_Pron : Pron ;
-  here_Adv : Adv ;
-  here7to_Adv : Adv ; -- to here
-  here7from_Adv : Adv ;  -- from here
+  here_Adv : Adv Subject ;
+  here7to_Adv : Adv Subject ; -- to here
+  here7from_Adv : Adv Subject ;  -- from here
   how_IAdv : IAdv ;
   how8many_IDet : IDet ;
   how8much_IAdv : IAdv ;
@@ -55,10 +55,10 @@ abstract Structural = Cat ** {
   in_Prep : Prep ;
   it_Pron : Pron ;
   less_CAdv : CAdv ;
-  many_Det : Det ;
+  many_Det : Det Subject ;
   more_CAdv : CAdv ;
   most_Predet : Predet ;
-  much_Det : Det ;
+  much_Det : Det Subject ;
   must_VV : VV ;
 ---b  no_Phr : Phr ;
   no_Utt : Utt ;
@@ -73,19 +73,19 @@ abstract Structural = Cat ** {
   quite_Adv : AdA ;
   she_Pron : Pron ;
   so_AdA : AdA ;
-  someSg_Det : Det ;
-  somePl_Det : Det ;
-  somebody_NP : NP ;
-  something_NP : NP ;
-  somewhere_Adv : Adv ;
-  that_Quant : Quant ;
+  someSg_Det : Det Subject ;
+  somePl_Det : Det Subject ;
+  somebody_NP : NP Subject ;
+  something_NP : NP Subject ;
+  somewhere_Adv : Adv Subject ;
+  that_Quant : Quant Subject ;
   that_Subj : Subj ;
-  there_Adv : Adv ;
-  there7to_Adv : Adv ; -- to there
-  there7from_Adv : Adv ; -- from there
+  there_Adv : Adv Subject ;
+  there7to_Adv : Adv Subject ; -- to there
+  there7from_Adv : Adv Subject ; -- from there
   therefore_PConj : PConj ;
   they_Pron : Pron ; 
-  this_Quant : Quant ;
+  this_Quant : Quant Subject ;
   through_Prep : Prep ;
   to_Prep : Prep ;
   too_AdA : AdA ;
@@ -110,13 +110,13 @@ abstract Structural = Cat ** {
   youPl_Pron : Pron ; -- you (plural)
   youPol_Pron : Pron ; -- you (polite)
 
-  no_Quant : Quant ; 
+  no_Quant : Quant Subject ; 
   not_Predet : Predet ;
   if_then_Conj : Conj ;
   at_least_AdN : AdN ;
   at_most_AdN : AdN ;
-  nobody_NP : NP ;
-  nothing_NP : NP ;
+  nobody_NP : NP Subject ;
+  nothing_NP : NP Subject ;
   except_Prep : Prep ;
 
   as_CAdv : CAdv ;
