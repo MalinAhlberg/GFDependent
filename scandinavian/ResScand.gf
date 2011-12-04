@@ -86,5 +86,20 @@ interface ResScand = DiffScand ** open CommonScand, Prelude in {
     en2,ea2,eext : Bool = False   -- indicate if the field exists
     } ;
 
+  detCN :  {s,sp : NPerson => Bool => NGender => Str ; n : Number ; det : DetSpecies}-> {s : Number => DetSpecies => Case => Str ; g : NGender ; isMod : Bool}  -> {s : NPerson => NPForm => Str ; a : Agr} = \det,cn ->
+      let 
+        g = cn.g ;
+        m = cn.isMod ;
+        dd = case <det.det,detDef,m> of {
+          <DDef Def, Indef, True> => DDef Indef ;
+          <d,_,_> => d
+          }
+      in {
+      s = \\a,c => det.s ! a ! m ! g ++
+                 cn.s ! det.n ! dd ! caseNP c ; 
+      a = agrP3 (ngen2gen g) det.n
+      } ;
+
+
 
 }

@@ -1,7 +1,8 @@
 incomplete concrete ExtraScand of ExtraScandAbs = CatScand ** 
    open CommonScand,Coordination,ResScand, ParamX in {
   lin
-    GenNP np = {
+  -- simplify here, to get Quant easier
+    GenNP _ np = {
       s = \\a,n,_,_,g  => np.s ! a ! NPPoss (gennum (ngen2gen g) n) Nom ; 
       sp = \\_,_,_,_,_ => NONEXIST ;
       det = DDef Indef
@@ -72,7 +73,7 @@ incomplete concrete ExtraScand of ExtraScandAbs = CatScand **
             let 
               neg = vp.a1 ! p.p ;
               verb = vp.s ! VPFinite t.t t.a ;
-              compl = verb.inf ++ vp.n2 ! a ++ vp.a2 ++ vp.ext ;
+              compl = verb.inf ++ vp.n2 ! a ++ vp.a2 ! a ++ vp.ext ;
             in t.s ++ p.s ++ case o of {
               Main => vp.a0 ++ verb.fin ++ neg ++ compl ;
               Inv  => verb.fin ++ vp.a0 ++ neg ++ compl ; ----
@@ -83,20 +84,19 @@ incomplete concrete ExtraScand of ExtraScandAbs = CatScand **
 
     ConjVPS = conjunctDistrTable2 Order Agr ;
 
-    ICompAP ap = {s = \\a => hur_IAdv.s ++ ap.s ! a} ;
+    ICompAP ap = {s = \\a => hur_IAdv.s ++ ap.s ! aNPerson ! a} ;
 
-    IAdvAdv adv = {s = hur_IAdv.s ++ adv.s} ;
+    IAdvAdv adv = {s = hur_IAdv.s ++ adv.s ! aNPerson} ;
 
   lincat
     Foc = {s : STense => Anteriority => Polarity => Str} ;
 
   lin
-  -- malin: not right np. a here
     FocObj np cls = {
-      s = \\t,a,p => cls.c2.s ++ np.s ! cls.agr ! accusative ++ cls.s ! t ! a ! p ! Inv
+      s = \\t,a,p => cls.c2.s ++ np.s ! (getNPerson cls.agr) ! accusative ++ cls.s ! t ! a ! p ! Inv
       } ;
     FocAdv adv cls = {
-      s = \\t,a,p => adv.s ! cls.agr ++ cls.s ! t ! a ! p ! Inv
+      s = \\t,a,p => adv.s ! (getNPerson cls.agr) ++ cls.s ! t ! a ! p ! Inv
       } ; 
     FocAdV adv cls = {
       s = \\t,a,p => adv.s ++ cls.s ! t ! a ! p ! Inv

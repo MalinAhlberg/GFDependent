@@ -60,8 +60,8 @@ abstract Extra = Cat ** {
     FocAdV : AdV -> Cl       -> Foc ;   -- never will I sleep
     FocAP  : APObject -> NPSubject  -> Foc ;   -- green was the tree
     FocNeg : Cl            -> Foc ;   -- not is he here
-    FocVP  : VP       -> NP Subject  -> Foc ;   -- love her I do
-    FocVV  : VV -> VP -> NP Subject  -> Foc ;   -- to love her I want
+    FocVP  : VP       -> NPSubject  -> Foc ;   -- love her I do
+    FocVV  : VV -> VP -> NPSubject  -> Foc ;   -- to love her I want
     
     UseFoc : Temp -> Pol -> Foc -> Utt ;
 

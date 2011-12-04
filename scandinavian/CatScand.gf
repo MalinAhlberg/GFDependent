@@ -12,6 +12,7 @@ incomplete concrete CatScand of Cat =
    AdvSub a = {s = a.s ! aNPerson } ; 
    AdvObj _ a = a ;
   lincat
+   Boolean = {} ;    
    Adv = {s : NPerson => Str} ;
    AdvObject = {s : NPerson => Str} ;
    AdvSubject = {s : Str} ;
@@ -88,6 +89,7 @@ incomplete concrete CatScand of Cat =
     NPSubject = {s : NPForm => Str ; a : Agr} ;
     Pron = {s : NPForm => Str ; a : Agr} ;
     Det = {s,sp : NPerson => Bool => NGender => Str ; n : Number ; det : DetSpecies} ;
+    -- simplify Quant!! Or not, NPerson subject, number & gender object
     Quant = {s,sp : NPerson => Number => Bool => Bool => NGender => Str ; det : DetSpecies} ;
     Predet = {s : Gender => Number => Str ; p : Str ; a : PredetAgr} ;
     Num = {s : NGender => Str ; isDet : Bool ; n : Number} ;
