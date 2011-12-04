@@ -4,63 +4,63 @@ incomplete concrete AdjectiveScand of Adjective =
   lin
 
     PositA  a = {
-      s = \\ap => a.s ! AF (APosit ap) Nom ;
+      s = \\ag,ap => a.s ! AF (APosit ap) Nom ;
       isPre = True
       } ;
-    ComparA a np = {
-      s = \\ap => case a.isComp of {
+    ComparA _ a np = {
+      s = \\ag,ap => case a.isComp of {
         True => compMore ++ a.s ! AF (APosit ap) Nom ;
         _    => a.s ! AF ACompar Nom
         }
-        ++ conjThan ++ np.s ! nominative ; 
+        ++ conjThan ++ np.s ! ag ! nominative ; 
       isPre = False
       } ;
     UseComparA a = {
-      s = \\ap => case a.isComp of {
+      s = \\_,ap => case a.isComp of {
         True => compMore ++ a.s ! AF (APosit ap) Nom ;
         _    => a.s ! AF ACompar Nom
         } ;
       isPre = False
       } ;
 
-    CAdvAP ad ap np = {
-      s = \\a => ad.s ++ ap.s ! a ++ ad.p ++ np.s ! nominative ; 
+    CAdvAP _ _ ad ap np = {
+      s = \\ag,a => ad.s ++ ap.s ! ag ! a ++ ad.p ++ np.s ! ag ! nominative ; 
       isPre = False
       } ;
 
     AdjOrd ord = {
-      s = \\_ => ord.s ;
+      s = \\_,_ => ord.s ;
       isPre = True
       } ;
 
-    ComplA2 a np = {
-      s = \\ap => a.s ! AF (APosit ap) Nom ++ a.c2.s ++ np.s ! accusative ; 
+    ComplA2 _ a np = {
+      s = \\ag,ap => a.s ! AF (APosit ap) Nom ++ a.c2.s ++ np.s ! ag ! accusative ; 
       isPre = False
       } ;
 
     ReflA2 a = {
-      s = \\ap => a.s ! AF (APosit ap) Nom ++ a.c2.s ++ 
+      s = \\ag,ap => a.s ! AF (APosit ap) Nom ++ a.c2.s ++ 
                   reflPron (agrP3 Utr Sg) ; ---- 
       isPre = False
       } ;
 
-    SentAP ap sc = {
-      s = \\a => ap.s ! a ++ sc.s ; 
+    SentAP _ ap sc = {
+      s = \\ag,a => ap.s ! ag ! a ++ sc.s ; 
       isPre = False
       } ;
 
-    AdAP ada ap = {
-      s = \\a => ada.s ++ ap.s ! a ;
+    AdAP _ ada ap = {
+      s = \\ag,a => ada.s ++ ap.s ! ag ! a ;
       isPre = ap.isPre
       } ;
 
-    AdvAP ap adv = {
-      s = \\a => ap.s ! a ++ adv.s ;
+    AdvAP _ _ ap adv = {
+      s = \\ag,a => ap.s ! ag ! a ++ adv.s ! ag ;
       isPre = ap.isPre
       } ;
 
     UseA2 a = {
-      s = \\ap => a.s ! AF (APosit ap) Nom ;
+      s = \\ag,ap => a.s !  AF (APosit ap) Nom ;
       isPre = True
       } ;
 

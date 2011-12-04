@@ -81,7 +81,7 @@ interface ResScand = DiffScand ** open CommonScand, Prelude in {
       VRefl => reflPron a ;
       _ => []
       } ;
-    a2  : Str = [] ;
+    a2  : Agr => Str = \\_ => [] ;
     ext : Str = [] ;
     en2,ea2,eext : Bool = False   -- indicate if the field exists
     } ;

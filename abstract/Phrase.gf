@@ -25,12 +25,12 @@ abstract Phrase = Cat ** {
 
     UttIP     : IP   -> Utt ;               -- who
     UttIAdv   : IAdv -> Utt ;               -- why
-    UttNP     : (a : Boolean) -> NP a  -> Utt ;               -- this man -- sin man.
-    UttAdv    : (a : Boolean) -> Adv a -> Utt ;               -- here -- i sitt hus.
+    UttNP     : NPSubject  -> Utt ;               -- this man -- sin man. --obs! både obj och subj  
+    UttAdv    : AdvSubject -> Utt ;               -- here -- i sitt hus.--obs! både obj och subj  
     UttVP     : VP   -> Utt ;               -- to sleep
     UttCN     : CN   -> Utt ;               -- house
     UttCard   : Card -> Utt ;               -- five
-    UttAP     : (a : Boolean) -> AP a -> Utt ;               -- fine --lika fin som sin syster
+    UttAP     : APSubject -> Utt ;               -- fine --lika fin som sin syster--obs! både obj och subj  
     UttInterj : Interj -> Utt ;             -- alas
 
 -- The phrasal conjunction is optional. A sentence conjunction
@@ -43,6 +43,6 @@ abstract Phrase = Cat ** {
 -- which may be overgenerating (e.g. "I").
 
     NoVoc   : Voc ;
-    VocNP   : NP Subject -> Voc ;                   -- my friend
+    VocNP   : NPSubject -> Voc ;                   -- my friend
 
 }

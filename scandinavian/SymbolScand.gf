@@ -11,7 +11,7 @@ lin
     a = agrP3 (ngen2gen cn.g) Sg
     } ;
   CNSymbNP det cn xs = let g = cn.g in {
-    s = \\c => det.s ! cn.isMod ! g ++ cn.s ! det.n ! det.det ! caseNP c ++ xs.s ; 
+    s = \\c => det.s ! aNPerson ! cn.isMod ! g ++ cn.s ! det.n ! det.det ! caseNP c ++ xs.s ; 
     a = agrP3 (ngen2gen g) det.n
     } ;
   CNNumNP cn i = {

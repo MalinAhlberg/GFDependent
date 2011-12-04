@@ -23,6 +23,12 @@ abstract Cat = Common -[Adv] ** {
   cat
 
   Boolean ;
+  NPSubject ;
+  NPObject ;
+  APSubject ;
+  APObject ;
+  AdvSubject ;
+  AdvObject ;
   data 
     Subject : Boolean ;
     Object : Boolean ;
@@ -31,6 +37,15 @@ abstract Cat = Common -[Adv] ** {
     def isObj _      Object = Object ; 
     def isObj Object _      = Object ; 
     def isObj _       _     = Subject ; 
+  fun
+    NPSub : NP Subject -> NPSubject ;
+    NPObj : (a : Boolean) -> NP a -> NPObject ;
+    APSub : AP Subject -> APSubject ;
+    APObj : (a : Boolean) -> AP a -> APObject ;
+    AdvSub : Adv Subject -> AdvSubject ;
+    AdvObj : (a : Boolean) -> Adv a -> AdvObject ;
+
+
 
  cat
   Adv Boolean ;

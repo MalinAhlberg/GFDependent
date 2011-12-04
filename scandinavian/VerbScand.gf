@@ -8,17 +8,17 @@ incomplete concrete VerbScand of Verb = CatScand ** open CommonScand, ResScand i
     SlashV2a v = predV v ** {n3 = \\_ => [] ; c2 = v.c2} ;
 
     Slash2V3 v np = 
-      insertObj (\\a => v.c2.s ++ np.s ! accusative) (predV v) ** 
+      insertObj (\\a => v.c2.s ++ np.s ! getNPerson a ! accusative) (predV v) ** 
         {n3 = \\_ => [] ; c2 = v.c3} ;  -- to preserve the order of args
     Slash3V3 v np = predV v ** {
-      n3 = \\a => v.c3.s ++ np.s ! accusative ; 
+      n3 = \\a => v.c3.s ++ np.s ! getNPerson a ! accusative ; 
       c2 = v.c2
       } ;
 
     ComplVV v vp = insertObj (\\a => v.c2.s ++ infVP vp a) (predV v) ;
     ComplVS v s  = insertObj (\\_ => conjThat ++ s.s ! Sub) (predV v) ;
     ComplVQ v q  = insertObj (\\_ => q.s ! QIndir) (predV v) ;
-    ComplVA  v ap = insertObj (\\a => ap.s ! agrAdjNP a DIndef) (predV v) ;
+    ComplVA  v ap = insertObj (\\a => ap.s ! getNPerson a ! agrAdjNP a DIndef) (predV v) ;
 
     SlashV2V v vp = predV v ** {
       n3 = \\a => v.c3.s ++ infVP vp a ; 
@@ -33,30 +33,30 @@ incomplete concrete VerbScand of Verb = CatScand ** open CommonScand, ResScand i
       c2 = v.c2
       } ;
     SlashV2A v ap = predV v ** {
-      n3 = \\a => ap.s ! agrAdjNP a DIndef ;
+      n3 = \\a => ap.s ! getNPerson a ! agrAdjNP a DIndef ;
       c2 = v.c2
       } ; 
 
     ComplSlash vp np = 
        insertObj 
-         (\\a => vp.c2.s ++ np.s ! accusative ++ vp.n3 ! np.a) vp ;
+         (\\a => vp.c2.s ++ np.s ! getNPerson a ! accusative ++ vp.n3 ! np.a) vp ;
 
     SlashVV v vp = 
       insertObj (\\a => v.c2.s ++ infVP vp a) (predV v) ** {n3 = vp.n3 ; c2 = vp.c2} ;
 
     SlashV2VNP v np vp = 
       insertObj 
-        (\\a => v.c2.s ++ np.s ! accusative ++ v.c3.s ++ infVP vp a) (predV v) 
+        (\\a => v.c2.s ++ np.s ! getNPerson a ! accusative ++ v.c3.s ++ infVP vp a) (predV v) 
         ** {n3 = vp.n3 ; c2 = v.c2} ;
 
     UseComp comp = insertObj 
       comp.s (predV verbBe) ;
 
-    CompAP ap = {s = \\a => ap.s ! agrAdjNP a DIndef} ;
-    CompNP np = {s = \\a => np.s ! accusative} ;
-    CompAdv a = {s = \\_ => a.s} ;
+    CompAP ap = {s = \\a => ap.s ! getNPerson a ! agrAdjNP a DIndef} ;
+    CompNP np = {s = \\a => np.s ! getNPerson a ! accusative} ;
+    CompAdv adv = {s = \\a => adv.s ! getNPerson a} ;
 
-    AdvVP vp adv = insertAdv adv.s vp ;
+    AdvVP vp adv = insertAdv (\\a => adv.s ! getNPerson a) vp ; --- obs! make nice
     AdVVP adv vp = insertAdV adv.s vp ;
 
     ReflVP vp = insertObj (\\a => vp.c2.s ++ reflPron a ++ vp.n3 ! a) vp ;

@@ -1,10 +1,20 @@
 incomplete concrete CatScand of Cat = 
-  CommonX -[Tense,Temp] ** open (RS = ResScand), Prelude, CommonScand, (R = ParamX) in {
+  CommonX -[Tense,Temp,Adv] ** open (RS = ResScand), Prelude, CommonScand, (R = ParamX) in {
 
   flags optimize=all_subs ;
 
-  lincat
 
+  lin
+   NPSub np = {s = np.s ! aNPerson ; a = np.a} ; 
+   NPObj _ np = np ;
+   APSub ap = {s = ap.s ! aNPerson ; isPre = ap.isPre} ; 
+   APObj _ ap = ap ;
+   AdvSub a = {s = a.s ! aNPerson } ; 
+   AdvObj _ a = a ;
+  lincat
+   Adv = {s : NPerson => Str} ;
+   AdvObject = {s : NPerson => Str} ;
+   AdvSubject = {s : Str} ;
 -- Tensed/Untensed
 
     S  = {s : Order => Str} ;
@@ -14,11 +24,12 @@ incomplete concrete CatScand of Cat =
 
 -- Sentence
 
-    Cl = {s : STense => Anteriority => Polarity => Order => Str} ;
+    Cl = {s : STense => Anteriority => Polarity => Order => Str ; agr : Agr} ;
     ClSlash = {
       s : STense => Anteriority => Polarity => Order => Str ; 
       n3 : Agr => Str ;
-      c2 : Complement
+      c2 : Complement ;
+      agr : Agr  -- agr of the subject
       } ;
     Imp = {s : Polarity => Number => Str} ;
 
@@ -45,7 +56,7 @@ incomplete concrete CatScand of Cat =
       a0 : Str ;             -- bara (hon bara sover)
       a1 : Polarity => Str ; -- A1 inte ---s3
       n2 : Agr => Str ;      -- N2 dig  ---s5  
-      a2 : Str ;             -- A2 idag ---s6
+      a2 : Agr => Str ;  -- A2 idag ---s6
       ext : Str ;            -- S-Ext att hon går   ---s7
       en2,ea2,eext : Bool    -- indicate if the field exists
       } ;
@@ -58,7 +69,9 @@ incomplete concrete CatScand of Cat =
 
 -- Adjective
 
-    AP = {s : AFormPos => Str ; isPre : Bool} ; 
+    AP = {s : NPerson => AFormPos => Str ; isPre : Bool } ; 
+    APObject = {s : NPerson => AFormPos => Str ; isPre : Bool } ; 
+    APSubject = {s :  AFormPos => Str ; isPre : Bool } ; 
 
 -- Noun
 
@@ -70,10 +83,12 @@ incomplete concrete CatScand of Cat =
 
     CN = {s : Number => DetSpecies => Case => Str ; g : NGender ; isMod : Bool} ;
              --NPerson gives information about the subject  
-    --NP,Pron = {s : NPForm => Str ; refl : NPerson => Str ; a : Agr} ;
-    NP,Pron = {s : NPForm => Str ; a : Agr} ;
-    Det = {s,sp : Bool => NGender => Str ; n : Number ; det : DetSpecies} ;
-    Quant = {s,sp : Number => Bool => Bool => NGender => Str ; det : DetSpecies} ;
+    NP       = {s : NPerson => NPForm => Str ; a : Agr} ;
+    NPObject = {s : NPerson => NPForm => Str ; a : Agr} ;
+    NPSubject = {s : NPForm => Str ; a : Agr} ;
+    Pron = {s : NPForm => Str ; a : Agr} ;
+    Det = {s,sp : NPerson => Bool => NGender => Str ; n : Number ; det : DetSpecies} ;
+    Quant = {s,sp : NPerson => Number => Bool => Bool => NGender => Str ; det : DetSpecies} ;
     Predet = {s : Gender => Number => Str ; p : Str ; a : PredetAgr} ;
     Num = {s : NGender => Str ; isDet : Bool ; n : Number} ;
     Card = {s : NGender => Str ; n : Number} ;

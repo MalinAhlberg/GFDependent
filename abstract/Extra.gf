@@ -36,7 +36,7 @@ abstract Extra = Cat ** {
   fun
     MkVPS : Temp -> Pol -> VP -> VPS ;
     ConjVPS : Conj -> [VPS] -> VPS ;
-    PredVPS : NP Subject -> VPS -> S ;
+    PredVPS : NPSubject -> VPS -> S ;
 
   -- 9/4/2010
 
@@ -55,10 +55,10 @@ abstract Extra = Cat ** {
     Foc ;
 
   fun
-    FocObj : (a : Boolean) ->  NP a -> ClSlash -> Foc ;   -- her I love
-    FocAdv : (a : Boolean) ->  Adv a -> Cl     -> Foc ;   -- today I will sleep
-    FocAdV : (a : Boolean) ->  AdV -> Cl       -> Foc ;   -- never will I sleep
-    FocAP  : (a,b : Boolean) ->  AP a -> NP b  -> Foc ;   -- green was the tree
+    FocObj : NPObject -> ClSlash -> Foc ;   -- her I love
+    FocAdv : AdvObject -> Cl     -> Foc ;   -- today I will sleep
+    FocAdV : AdV -> Cl       -> Foc ;   -- never will I sleep
+    FocAP  : APObject -> NPSubject  -> Foc ;   -- green was the tree
     FocNeg : Cl            -> Foc ;   -- not is he here
     FocVP  : VP       -> NP Subject  -> Foc ;   -- love her I do
     FocVV  : VV -> VP -> NP Subject  -> Foc ;   -- to love her I want

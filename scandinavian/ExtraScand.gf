@@ -2,8 +2,8 @@ incomplete concrete ExtraScand of ExtraScandAbs = CatScand **
    open CommonScand,Coordination,ResScand, ParamX in {
   lin
     GenNP np = {
-      s = \\n,_,_,g  => np.s ! NPPoss (gennum (ngen2gen g) n) Nom ; 
-      sp = \\_,_,_,_ => NONEXIST ;
+      s = \\a,n,_,_,g  => np.s ! a ! NPPoss (gennum (ngen2gen g) n) Nom ; 
+      sp = \\_,_,_,_,_ => NONEXIST ;
       det = DDef Indef
       } ;
 
@@ -93,10 +93,10 @@ incomplete concrete ExtraScand of ExtraScandAbs = CatScand **
   lin
   -- malin: not right np. a here
     FocObj np cls = {
-      s = \\t,a,p => cls.c2.s ++ np.s ! accusative ++ cls.s ! t ! a ! p ! Inv
+      s = \\t,a,p => cls.c2.s ++ np.s ! cls.agr ! accusative ++ cls.s ! t ! a ! p ! Inv
       } ;
     FocAdv adv cls = {
-      s = \\t,a,p => adv.s ++ cls.s ! t ! a ! p ! Inv
+      s = \\t,a,p => adv.s ! cls.agr ++ cls.s ! t ! a ! p ! Inv
       } ; 
     FocAdV adv cls = {
       s = \\t,a,p => adv.s ++ cls.s ! t ! a ! p ! Inv

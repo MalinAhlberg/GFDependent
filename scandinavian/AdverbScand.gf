@@ -2,25 +2,25 @@ incomplete concrete AdverbScand of Adverb = CatScand ** open CommonScand, ResSca
 
   lin
     PositAdvAdj a = {
-      s = a.s ! adverbForm
+      s = \\ag => a.s ! adverbForm
       } ;
-    ComparAdvAdj cadv a np = {
-      s = cadv.s ++ a.s ! adverbForm ++ cadv.p ++ np.s ! nominative
+    ComparAdvAdj _ cadv a np = {
+      s = \\ag => cadv.s ++ a.s ! adverbForm ++ cadv.p ++ np.s ! ag ! nominative
       } ;
     ComparAdvAdjS cadv a s = {
-      s = cadv.s ++ a.s ! adverbForm ++ cadv.p ++ s.s ! Sub
+      s = \\_ => cadv.s ++ a.s ! adverbForm ++ cadv.p ++ s.s ! Sub
       } ;
 
-    PrepNP prep np = {s = prep.s ++ np.s ! accusative} ;
+    PrepNP _ prep np = {s = \\ag => prep.s ++ np.s ! ag ! accusative} ;
 
-    AdAdv = cc2 ;
+    AdAdv _ ad a = {s = \\ag => ad.s ++ a.s ! ag } ;-- cc2 ;
 
     PositAdAAdj a = {
       s = a.s ! adverbForm
       } ;
 
     SubjS subj s = {
-      s = subj.s ++ s.s ! Sub
+      s = \\_ => subj.s ++ s.s ! Sub
       }  ;
 
     AdnCAdv cadv = {s = cadv.s ++ conjThan} ;

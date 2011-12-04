@@ -13,8 +13,8 @@ fun
   IntPN    : Int -> PN ;                 -- 27
   FloatPN  : Float -> PN ;               -- 3.14159
   NumPN    : Card -> PN ;
-  CNNumNP  : CN -> Card -> NP Subject ;          -- level five ; level 5
-  CNSymbNP : Det Subject -> CN -> [Symb] -> NP Subject ; -- (the) (2) numbers x and y
+  CNNumNP  : CN -> Card -> NPSubject ;          -- level five ; level 5
+  CNSymbNP : Det Subject -> CN -> [Symb] -> NPSubject ; -- (the) (2) numbers x and y -- obs! Det Subject?
 
 
 --2 Sentence consisting of a formula
@@ -41,6 +41,6 @@ fun
 
 --2 Obsolescent
 
-  CNIntNP  : CN -> Int -> NP Subject ;           -- level 53 (covered by CNNumNP)
+  CNIntNP  : CN -> Int -> NPSubject ;           -- level 53 (covered by CNNumNP)
 
 }

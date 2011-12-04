@@ -104,8 +104,8 @@ abstract Noun = Cat ** {
 
 -- Relational nouns take one or two arguments.
 
-    ComplN2 : (a : Boolean ) -> N2 -> NP a -> CN ;    -- mother of the king                  --obs! Object??
-    ComplN3 : (a : Boolean ) -> N3 -> NP a -> N2 ;    -- distance from this city (to Paris)
+    ComplN2 : N2 -> NP Subject -> CN ;    -- mother of the king                  --obs! Object??
+    ComplN3 : N3 -> NP Subject -> N2 ;    -- distance from this city (to Paris)  --obs! Object??
 
 -- Relational nouns can also be used without their arguments.
 -- The semantics is typically derivative of the relational meaning.

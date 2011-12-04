@@ -14,28 +14,29 @@ incomplete concrete SentenceScand of Sentence =
           agr   = {g = Utr ; n = n ; p = P2} ;
           verb  = vp.s ! VPImperat ;
         in
-        verb.fin ++ vp.a1 ! pol ++ verb.inf ++ vp.n2 ! agr ++ vp.a2 ++ vp.ext
+        verb.fin ++ vp.a1 ! pol ++ verb.inf ++ vp.n2 ! agr ++ vp.a2 ! agr ++ vp.ext
     } ;
 
     SlashVP np vp = 
       mkClause 
         (np.s ! nominative) np.a 
         vp **
-      {n3 = vp.n3 ; c2 = vp.c2} ;
+      {n3 = vp.n3 ; c2 = vp.c2 ; agr = np.a } ;
 
     AdvSlash slash adv = {
-      s  = \\t,a,b,o => slash.s ! t ! a ! b ! o ++ adv.s ;
+      s  = \\t,a,b,o => slash.s ! t ! a ! b ! o ++ adv.s ! (getNPerson slash.agr) ;
       n3 = slash.n3 ;
-      c2 = slash.c2
+      c2 = slash.c2 ;
+      agr = slash.agr
     } ;
 
-    SlashPrep cl prep = cl ** {n3 = \\_ => [] ; c2 = {s = prep.s ; hasPrep = True}} ;
+    SlashPrep cl prep = cl ** {n3 = \\_ => [] ; c2 = {s = prep.s ; hasPrep = True} ; agr = cl.agr } ;
 
     SlashVS np vs slash = 
       mkClause
         (np.s ! nominative) np.a 
         (insertObj (\\_ => conjThat ++ slash.s ! Sub) (predV vs)) **
-      {n3 = slash.n3 ; c2 = slash.c2} ;
+      {n3 = slash.n3 ; c2 = slash.c2 ; agr = np.a } ;
 
     EmbedS  s  = {s = conjThat ++ s.s ! Sub} ;
     EmbedQS qs = {s = qs.s ! QIndir} ;

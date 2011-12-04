@@ -233,9 +233,24 @@ oper
 
   artDef : GenNum -> Str = \gn -> gennumForms "den" "det" "de" ! gn ;
 
-  mkNP : (x1,_,_,_,x5 : Str) -> Gender -> Number -> Person -> 
+  mkPron : (x1,_,_,_,x5 : Str) -> Gender -> Number -> Person -> 
          {s : NPForm => Str ; a : Agr} = \du,dig,din,ditt,dina,g,n,p -> {
     s = table {
+      NPNom => du ;
+      NPAcc => dig ;
+      NPPoss h c => mkCase c (gennumForms din ditt dina ! h)
+      } ;
+    a = {
+      g = g ;
+      n = n ;
+      p = p
+      }
+    } ;
+
+
+  mkNP : (x1,_,_,_,x5 : Str) -> Gender -> Number -> Person -> 
+         {s : NPerson => NPForm => Str ; a : Agr} = \du,dig,din,ditt,dina,g,n,p -> {
+    s = \\_ => table {
       NPNom => du ;
       NPAcc => dig ;
       NPPoss h c => mkCase c (gennumForms din ditt dina ! h)
@@ -257,10 +272,13 @@ oper
   detForms : (x1,x2,x3 : Str) -> Gender => Number => Str = \den,det,de -> 
     \\g,n => gennumForms den det de ! gennum g n ;
 
-  regNP : Str -> Str -> Gender -> Number -> {s : NPForm => Str ; a : Agr} =
+  regNP : Str -> Str -> Gender -> Number -> {s : NPerson => NPForm => Str ; a : Agr} =
     \det,dess,g,n ->
     mkNP det det dess dess dess g n P3 ;
 
+  regPron : Str -> Str -> Gender -> Number -> {s :NPForm => Str ; a : Agr} =
+    \det,dess,g,n ->
+    mkPron det det dess dess dess g n P3 ;
 
 -- For $Verb$.
 
@@ -272,7 +290,7 @@ oper
       a0 : Str ;             -- bara (hon bara sover)
       a1 : Polarity => Str ; -- A1 inte ---s3
       n2 : Agr => Str ;      -- N2 dig  ---s5  
-      a2 : Str ;             -- A2 idag ---s6
+      a2 : Agr => Str ;  -- A2 idag ---s6
       ext : Str ;            -- S-Ext att hon går   ---s7
       --- ea1,ev2,           --- these depend on params of v and a1
       en2,ea2,eext : Bool    -- indicate if the field exists
@@ -303,12 +321,12 @@ oper
     eext = vp.eext
     } ;
 
-  insertAdv : Str -> VP -> VP = \adv,vp -> {
+  insertAdv : (Agr => Str) -> VP -> VP = \adv,vp -> {
     s = vp.s ;
     a0 = vp.a0 ; 
     a1 = vp.a1 ;
     n2 = vp.n2 ;
-    a2 = vp.a2 ++ adv ;
+    a2 = \\agr => vp.a2 ! agr ++ adv ! agr;
     ext = vp.ext ;
     en2 = vp.en2 ;
     ea2 = True ;
@@ -328,13 +346,14 @@ oper
     } ;
 
   infVP : VP -> Agr -> Str = \vp,a -> 
-    vp.a0 ++ vp.a1 ! Pos ++ (vp.s ! VPInfinit Simul).inf ++ vp.n2 ! a ++ vp.a2 ++ vp.ext ; --- a1
+    vp.a0 ++ vp.a1 ! Pos ++ (vp.s ! VPInfinit Simul).inf ++ vp.n2 ! a ++ vp.a2 ! a ++ vp.ext ; --- a1
 
 
 -- For $Sentence$.
 
   Clause : Type = {
-    s : STense => Anteriority => Polarity => Order => Str
+    s : STense => Anteriority => Polarity => Order => Str ;
+    agr : Agr
     } ;
 
   mkClause : Str -> Agr -> VP -> Clause = \subj,agr,vp -> {
@@ -342,13 +361,14 @@ oper
         let 
           verb  = vp.s  ! VPFinite t a ;
           neg   = vp.a1 ! b ;
-          compl = vp.n2 ! agr ++ vp.a2 ++ vp.ext
+          compl = vp.n2 ! agr ++ vp.a2 ! agr ++ vp.ext
         in
         case o of {
           Main => subj ++ vp.a0 ++ verb.fin ++ neg ++ verb.inf ++ compl ;
           Inv  => verb.fin ++ subj ++ vp.a0 ++ neg ++ verb.inf ++ compl ;
           Sub  => subj ++ neg ++ vp.a0 ++ verb.fin ++ verb.inf ++ compl
-          }
+          } ;
+     agr = agr
     } ;
 
 }
