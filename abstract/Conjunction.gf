@@ -19,9 +19,9 @@ abstract Conjunction = Cat ** {
   fun
     ConjS    : Conj -> [S] -> S ;       -- "he walks and she runs"
     ConjRS   : Conj -> [RS] -> RS ;     -- "who walks and whose mother runs"
---    ConjAP   : Conj -> [AP Boolean] -> AP Boolean ;     -- "cold and warm"
---    ConjNP   : Conj -> [NP Boolean] -> NP Boolean ;     -- "she or we"
---    ConjAdv  : Conj -> [Adv Boolean] -> Adv Boolean ;   -- "here or there"
+    ConjAP   : (b : Boolean) -> Conj -> [AP b] -> AP b;     -- "cold and warm"
+    ConjNP   : (b : Boolean) ->  Conj -> [NP b] -> NP b ;     -- "she or we"
+    ConjAdv  : (b : Boolean) -> Conj -> [Adv b] -> Adv b ;   -- "here or there"
     ConjIAdv : Conj -> [IAdv] -> IAdv ; -- "where and with whom"
     ConjCN   : Conj -> [CN] -> CN ;     -- "man and woman"
 

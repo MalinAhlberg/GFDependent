@@ -7,14 +7,13 @@ incomplete concrete ConjunctionScand of Conjunction =
 
     ConjS conj ss = conjunctDistrTable Order conj ss ;
 
-    ConjAdv conj ss = conjunctDistrSS conj ss ;
+    ConjAdv _ conj ss = conjunctDistrTable NPerson conj ss ;
 
-    ConjNP conj ss = conjunctDistrTable NPForm conj ss ** {
-      --refl = ss.refl ;
+    ConjNP _ conj ss = conjunctDistrTable2 NPerson NPForm conj ss ** {
       a = {g = ss.a.g ; n = conjNumber conj.n ss.a.n ; p = ss.a.p}
       } ;
 
-    ConjAP conj ss = conjunctDistrTable AFormPos conj ss ** {
+    ConjAP _ conj ss = conjunctDistrTable2 NPerson AFormPos conj ss ** {
       isPre = ss.isPre
       } ;
 
@@ -38,12 +37,12 @@ incomplete concrete ConjunctionScand of Conjunction =
       s1 = \\o => x.s ! Inv ++ comma ++ xs.s1 ! case o of {Inv => Main ; _ => o} ;
       s2 = xs.s2
       } ;
-    BaseAdv = twoSS ;
-    ConsAdv = consrSS comma ;
-    BaseNP x y = twoTable NPForm x y ** {{-refl = x.refl ;-} a = conjAgr x.a y.a} ;      --sin katt och hus
-    ConsNP xs x = consrTable NPForm comma xs x ** {refl = x.refl ; a = conjAgr xs.a x.a} ;
-    BaseAP x y = twoTable AFormPos x y ** {isPre = andB x.isPre y.isPre} ;
-    ConsAP xs x = consrTable AFormPos comma xs x ** {isPre = andB xs.isPre x.isPre} ;
+    BaseAdv _ = twoTable NPerson ;
+    ConsAdv _ = consrTable NPerson comma ;
+    BaseNP _ x y = twoTable2 NPerson NPForm x y ** {{-refl = x.refl ;-} a = conjAgr x.a y.a} ;      --sin katt och hus
+    ConsNP _ xs x = consrTable2 NPerson NPForm comma xs x ** {a = conjAgr xs.a x.a} ;
+    BaseAP _ x y = twoTable2 NPerson AFormPos x y ** {isPre = andB x.isPre y.isPre} ;
+    ConsAP _ xs x = consrTable2 NPerson AFormPos comma xs x ** {isPre = andB xs.isPre x.isPre} ;
     BaseRS x y = twoTable2 Agr RCase x y ** {c = y.c} ;
     ConsRS xs x = consrTable2 Agr RCase comma xs x ** {c = xs.c} ;
     BaseIAdv = twoSS ;
@@ -53,10 +52,10 @@ incomplete concrete ConjunctionScand of Conjunction =
 
   lincat
     [S] = {s1,s2 : Order => Str} ;
-    [Adv] = {s1,s2 : Str} ;
+    [Adv] = {s1,s2 : NPerson => Str} ;
     [IAdv] = {s1,s2 : Str} ;
-    [NP] = {s1,s2 : NPForm => Str ;{- refl : NPerson => Str ;-}  a : Agr} ;
-    [AP] = {s1,s2 : AFormPos => Str ; isPre : Bool} ;
+    [NP] = {s1,s2 : NPerson => NPForm => Str ; a : Agr} ;
+    [AP] = {s1,s2 : NPerson => AFormPos => Str ; isPre : Bool} ;
     [RS] = {s1,s2 : Agr => RCase => Str ; c : NPForm} ;
     [CN] = {s1,s2 : Number => DetSpecies => Case => Str} ; --- g : NGender ; isMod : Bool} ;
 
