@@ -13,8 +13,8 @@ abstract Noun = Cat ** {
 --
   fun
     DetCN   : (a : Boolean) -> Det a -> CN -> NP a ;   -- the man
-    UsePN   : PN -> NP Subject ;          -- John
-    UsePron : Pron -> NP Subject ;        -- he
+    UsePN   : (a : Boolean) -> PN -> NP a ;          -- John
+    UsePron : (a : Boolean) -> Pron -> NP a ;        -- he
 
 -- Pronouns are defined in the module [``Structural`` Structural.html].
 
@@ -77,20 +77,20 @@ abstract Noun = Cat ** {
 -- neatly distinct words (Spanish "un, unos ; el, los") but also without
 -- any particular word (Finnish; Swedish definites).
 
-    IndefArt   : Quant Subject ;
-    DefArt     : Quant Subject ;
+    IndefArt   : (a : Boolean) -> Quant a ;
+    DefArt     : (a : Boolean) -> Quant a ;
 
 -- Nouns can be used without an article as mass nouns. The resource does
 -- not distinguish mass nouns from other common nouns, which can result
 -- in semantically odd expressions.
 
-    MassNP     : CN -> NP Subject ;            -- (beer)
+    MassNP     : (a : Boolean) ->  CN -> NP a ;            -- (beer)
 
 -- Pronouns have possessive forms. Genitives of other kinds
 -- of noun phrases are not given here, since they are not possible
 -- in e.g. Romance languages. They can be found in $Extra$ modules.
 
-    PossPron : Pron -> Quant Subject ;    -- my (house)
+    PossPron : (a : Boolean) -> Pron -> Quant a ;    -- my (house)
 
 -- Other determiners are defined in [Structural Structural.html].
 

@@ -10,12 +10,12 @@ incomplete concrete NounScand of Noun =
 
   lin
     DetCN _ det cn = detCN det cn ; 
-    UsePN pn = {
+    UsePN _ pn = {
       s = \\_,c => pn.s ! caseNP c ; 
       a = agrP3 pn.g Sg
       } ;
 
-    UsePron p = {s = \\_ => p.s ; a = p.a } ;
+    UsePron _ p = {s = \\_ => p.s ; a = p.a } ;
 
     PredetNP _ pred np = {
       s = \\a,c => pred.s ! np.a.g ! np.a.n ++ pred.p ++ np.s ! a ! c ;
@@ -69,7 +69,7 @@ incomplete concrete NounScand of Noun =
         a = agrP3 (ngen2gen g) det.n
       } ;
 
-    PossPron p = {
+    PossPron _ p = {
       s,sp = \\_,n,_,_,g => p.s ! NPPoss (gennum (ngen2gen g) n) Nom ; 
       det = DDef Indef
       } ;
@@ -95,13 +95,13 @@ incomplete concrete NounScand of Noun =
       isDet = True
       } ;
 
-    DefArt = {
+    DefArt _ = {
       s  = \\_,n,bm,bn,g => if_then_Str (orB bm bn) (artDef (gennum (ngen2gen g) n)) [] ; 
       sp = \\_,n,bm,bn,g => artDef (gennum (ngen2gen g) n) ;
       det = DDef Def
       } ;
 
-    IndefArt = {
+    IndefArt _ = {
       s = \\_ => (table {
         Sg => \\_,bn,g => if_then_Str bn [] (artIndef ! g) ; 
         Pl => \\_,bn,_ => []
@@ -113,7 +113,7 @@ incomplete concrete NounScand of Noun =
       det = DIndef
       } ;
 
-    MassNP cn = {
+    MassNP _ cn = {
       s = \\_,c => cn.s ! Sg ! DIndef ! caseNP c ; 
       a = agrP3 (ngen2gen cn.g) Sg
       } ;
