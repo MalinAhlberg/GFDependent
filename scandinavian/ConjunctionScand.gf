@@ -37,12 +37,12 @@ incomplete concrete ConjunctionScand of Conjunction =
       s1 = \\o => x.s ! Inv ++ comma ++ xs.s1 ! case o of {Inv => Main ; _ => o} ;
       s2 = xs.s2
       } ;
-    BaseAdv _ = twoTable NPerson ;
-    ConsAdv _ = consrTable NPerson comma ;
-    BaseNP _ x y = twoTable2 NPerson NPForm x y ** {{-refl = x.refl ;-} a = conjAgr x.a y.a} ;      --sin katt och hus
-    ConsNP _ xs x = consrTable2 NPerson NPForm comma xs x ** {a = conjAgr xs.a x.a} ;
-    BaseAP _ x y = twoTable2 NPerson AFormPos x y ** {isPre = andB x.isPre y.isPre} ;
-    ConsAP _ xs x = consrTable2 NPerson AFormPos comma xs x ** {isPre = andB xs.isPre x.isPre} ;
+    BaseAdv _ _ = twoTable NPerson ;
+    ConsAdv _ _ = consrTable NPerson comma ;
+    BaseNP _ _ x y = twoTable2 NPerson NPForm x y ** {a = conjAgr x.a y.a} ; 
+    ConsNP _ _ xs x = consrTable2 NPerson NPForm comma xs x ** {a = conjAgr xs.a x.a} ;
+    BaseAP _ _ x y = twoTable2 NPerson AFormPos x y ** {isPre = andB x.isPre y.isPre} ;
+    ConsAP _ _ xs x = consrTable2 NPerson AFormPos comma xs x ** {isPre = andB xs.isPre x.isPre} ;
     BaseRS x y = twoTable2 Agr RCase x y ** {c = y.c} ;
     ConsRS xs x = consrTable2 Agr RCase comma xs x ** {c = xs.c} ;
     BaseIAdv = twoSS ;

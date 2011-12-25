@@ -12,33 +12,25 @@
 -- [``Extra`` ../abstract/Extra.gf].
 
 
-abstract Conjunction = Cat ** {
+abstract Conjunction = ConjunctionX - [BaseNP,ConsNP,BaseAP,ConsAP,BaseAdv,ConsAdv] ** {
 
 --2 Rules
 
   fun
     ConjS    : Conj -> [S] -> S ;       -- "he walks and she runs"
     ConjRS   : Conj -> [RS] -> RS ;     -- "who walks and whose mother runs"
-    ConjAP   : (b : Boolean) -> Conj -> [AP b] -> AP b;     -- "cold and warm"
     ConjNP   : (b : Boolean) ->  Conj -> [NP b] -> NP b ;     -- "she or we"
     ConjAdv  : (b : Boolean) -> Conj -> [Adv b] -> Adv b ;   -- "here or there"
     ConjIAdv : Conj -> [IAdv] -> IAdv ; -- "where and with whom"
     ConjCN   : Conj -> [CN] -> CN ;     -- "man and woman"
-    --BaseNP : (a,b : Boolean) -> NP a -> NP b -> NP (isObj a b) ;
-   -- ListNP : [NP Boolean]{2} ;
 
---2 Categories
-
--- These categories are only used in this module.
-
-  cat
-    [S]{2} ; 
-    [RS]{2} ; 
-    [Adv Boolean]{2} ; 
-    --[NP Boolean]{2} ; 
-    [AP Boolean]{2} ;
-    [IAdv]{2} ;
-    [CN] {2} ;
+-- special list constructors for the dependent types
+    BaseNP : (a,b : Boolean) -> NP a -> NP b -> [NP (isObj a b)] ;
+    ConsNP : (a,b : Boolean) -> NP a -> [NP b] -> [NP (isObj a b)] ;
+    BaseAdv : (a,b : Boolean) -> Adv a -> Adv b -> [Adv (isObj a b)] ;
+    ConsAdv : (a,b : Boolean) -> Adv a -> [Adv b] -> [Adv (isObj a b)] ;
+    BaseAP : (a,b : Boolean) -> AP a -> AP b -> [AP (isObj a b)] ;
+    ConsAP : (a,b : Boolean) -> AP a -> [AP b] -> [AP (isObj a b)] ;
 
 --2 List constructors
 
