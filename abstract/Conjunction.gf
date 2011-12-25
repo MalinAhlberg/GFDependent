@@ -24,6 +24,8 @@ abstract Conjunction = Cat ** {
     ConjAdv  : (b : Boolean) -> Conj -> [Adv b] -> Adv b ;   -- "here or there"
     ConjIAdv : Conj -> [IAdv] -> IAdv ; -- "where and with whom"
     ConjCN   : Conj -> [CN] -> CN ;     -- "man and woman"
+    --BaseNP : (a,b : Boolean) -> NP a -> NP b -> NP (isObj a b) ;
+   -- ListNP : [NP Boolean]{2} ;
 
 --2 Categories
 
@@ -33,7 +35,7 @@ abstract Conjunction = Cat ** {
     [S]{2} ; 
     [RS]{2} ; 
     [Adv Boolean]{2} ; 
-    [NP Boolean]{2} ; 
+    --[NP Boolean]{2} ; 
     [AP Boolean]{2} ;
     [IAdv]{2} ;
     [CN] {2} ;

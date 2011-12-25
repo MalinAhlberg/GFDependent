@@ -4,18 +4,25 @@ incomplete concrete CatScand of Cat =
   flags optimize=all_subs ;
 
 
+-- The dependent types below differentiates between noun, adverbs and adjectives
+-- that can only be used as objects (eg. reflexive objects) and the ones that
+-- can be used as either subject or object.
+-- On the surface we use different types, NPSubject vs. NPObject in 
+
   lin
    NPSub np = {s = np.s ! aNPerson ; a = np.a} ; 
-   NPObj _ np = np ;
+   NPObj np = np ;
+   NPCoersion np = np ; 
    APSub ap = {s = ap.s ! aNPerson ; isPre = ap.isPre} ; 
    APObj _ ap = ap ;
    AdvSub a = {s = a.s ! aNPerson } ; 
    AdvObj _ a = a ;
+
   lincat
    Boolean = {} ;    
-   Adv = {s : NPerson => Str} ;
-   AdvObject = {s : NPerson => Str} ;
+   Adv,AdvObject = {s : NPerson => Str} ;
    AdvSubject = {s : Str} ;
+
 -- Tensed/Untensed
 
     S  = {s : Order => Str} ;
@@ -50,7 +57,7 @@ incomplete concrete CatScand of Cat =
 -- Verb
 
     VP = {
-      s : VPForm => {
+      s : Voice => VPForm => {
         fin : Str ;          -- V1 har  ---s1
         inf : Str            -- V2 sagt ---s4
         } ;
@@ -59,6 +66,7 @@ incomplete concrete CatScand of Cat =
       n2 : Agr => Str ;      -- N2 dig  ---s5  
       a2 : Agr => Str ;  -- A2 idag ---s6
       ext : Str ;            -- S-Ext att hon går   ---s7
+      voice : Voice ;        -- which for the verb should be used in
       en2,ea2,eext : Bool    -- indicate if the field exists
       } ;
     VPSlash = CommonScand.VP ** {
@@ -81,15 +89,15 @@ incomplete concrete CatScand of Cat =
 -- permits treating definite articles "huset - de fem husen - det gamla huset"
 -- as $Quant$.
 
+   -- NPerson = Per1 Number | Per2 Number | Per3, 
+   --  gives information about the antecedent; "(_han_ såg) _sin_ katt"
+   -- Det, Quant also use this parameter, their other arguments regards
+   -- the quantified noun phrase.
+    NP,NPObject,Pron  = {s : NPerson => NPForm => Str ; a : Agr} ;
+    NPSubject = {s : NPForm => Str ; a : Agr} ;
 
     CN = {s : Number => DetSpecies => Case => Str ; g : NGender ; isMod : Bool} ;
-             --NPerson gives information about the subject  
-    NP       = {s : NPerson => NPForm => Str ; a : Agr} ;
-    NPObject = {s : NPerson => NPForm => Str ; a : Agr} ;
-    NPSubject = {s : NPForm => Str ; a : Agr} ;
-    Pron = {s : NPForm => Str ; a : Agr} ;
     Det = {s,sp : NPerson => Bool => NGender => Str ; n : Number ; det : DetSpecies} ;
-    -- simplify Quant!! Or not, NPerson subject, number & gender object
     Quant = {s,sp : NPerson => Number => Bool => Bool => NGender => Str ; det : DetSpecies} ;
     Predet = {s : Gender => Number => Str ; p : Str ; a : PredetAgr} ;
     Num = {s : NGender => Str ; isDet : Bool ; n : Number} ;

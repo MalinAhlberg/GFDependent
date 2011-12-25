@@ -42,18 +42,18 @@ abstract Structural = Cat ** {
   few_Det : Det Subject ;
   for_Prep : Prep ;
   from_Prep : Prep ;
-  he_Pron : Pron ;
+  he_Pron : Pron Subject ;
   here_Adv : Adv Subject ;
   here7to_Adv : Adv Subject ; -- to here
   here7from_Adv : Adv Subject ;  -- from here
   how_IAdv : IAdv ;
   how8many_IDet : IDet ;
   how8much_IAdv : IAdv ;
-  i_Pron : Pron ;
+  i_Pron : Pron Subject ;
   if_Subj : Subj ;
   in8front_Prep : Prep ; -- in front of
   in_Prep : Prep ;
-  it_Pron : Pron ;
+  it_Pron : Pron Subject ;
   less_CAdv : CAdv ;
   many_Det : Det Subject ;
   more_CAdv : CAdv ;
@@ -71,7 +71,7 @@ abstract Structural = Cat ** {
   please_Voc : Voc ;
   possess_Prep : Prep ; -- of (possessive)
   quite_Adv : AdA ;
-  she_Pron : Pron ;
+  she_Pron : Pron Subject ;
   so_AdA : AdA ;
   someSg_Det : Det Subject ;
   somePl_Det : Det Subject ;
@@ -84,7 +84,7 @@ abstract Structural = Cat ** {
   there7to_Adv : Adv Subject ; -- to there
   there7from_Adv : Adv Subject ; -- from there
   therefore_PConj : PConj ;
-  they_Pron : Pron ; 
+  they_Pron : Pron Subject ; 
   this_Quant : Quant Subject ;
   through_Prep : Prep ;
   to_Prep : Prep ;
@@ -92,7 +92,7 @@ abstract Structural = Cat ** {
   under_Prep : Prep ;
   very_AdA : AdA ;
   want_VV : VV ;
-  we_Pron : Pron ;
+  we_Pron : Pron Subject ;
   whatPl_IP : IP ; -- what (plural)
   whatSg_IP : IP ; -- what (singular)
   when_IAdv : IAdv ;
@@ -106,9 +106,9 @@ abstract Structural = Cat ** {
   without_Prep : Prep ;
 ---b  yes_Phr : Phr ;
   yes_Utt : Utt ;
-  youSg_Pron : Pron ; -- you (singular)
-  youPl_Pron : Pron ; -- you (plural)
-  youPol_Pron : Pron ; -- you (polite)
+  youSg_Pron : Pron Subject ; -- you (singular)
+  youPl_Pron : Pron Subject ; -- you (plural)
+  youPol_Pron : Pron Subject ; -- you (polite)
 
   no_Quant : Quant Subject ; 
   not_Predet : Predet ;

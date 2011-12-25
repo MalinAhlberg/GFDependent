@@ -39,7 +39,8 @@ abstract Cat = Common -[Adv] ** {
     def isObj _       _     = Subject ; 
   fun
     NPSub : NP Subject -> NPSubject ;
-    NPObj : (a : Boolean) -> NP a -> NPObject ;
+    NPObj : NP Object -> NPObject ;
+    NPCoersion : NP Subject -> NP Object ;
     APSub : AP Subject -> APSubject ;
     APObj : (a : Boolean) -> AP a -> APObject ;
     AdvSub : Adv Subject -> AdvSubject ;
@@ -104,7 +105,7 @@ abstract Cat = Common -[Adv] ** {
 
     CN ;     -- common noun (without determiner)    e.g. "red house"
     NP Boolean ;     -- noun phrase (subject or object)     e.g. "the red house"
-    Pron ;   -- personal pronoun                    e.g. "she"
+    Pron Boolean ;   -- personal pronoun                    e.g. "she"
     Det  Boolean;    -- determiner phrase                   e.g. "those seven"
     Predet ; -- predeterminer (prefixed Quant)      e.g. "all"
     Quant Boolean ;  -- quantifier ('nucleus' of Det)       e.g. "this/these"

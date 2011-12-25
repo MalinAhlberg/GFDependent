@@ -3,8 +3,8 @@ incomplete concrete ExtraScand of ExtraScandAbs = CatScand **
   lin
   -- simplify here, to get Quant easier
     GenNP _ np = {
-      s = \\a,n,_,_,g  => np.s ! a ! NPPoss (gennum (ngen2gen g) n) Nom ; 
-      sp = \\_,_,_,_,_ => NONEXIST ;
+      s,sp = \\a,n,_,_,g  => np.s ! a ! NPPoss (gennum (ngen2gen g) n) Nom ; 
+      --sp = \\_,_,_,_,_ => NONEXIST ;
       det = DDef Indef
       } ;
 
@@ -72,7 +72,7 @@ incomplete concrete ExtraScand of ExtraScandAbs = CatScand **
       s = \\o,a => 
             let 
               neg = vp.a1 ! p.p ;
-              verb = vp.s ! VPFinite t.t t.a ;
+              verb = vp.s ! vp.voice ! VPFinite t.t t.a ;
               compl = verb.inf ++ vp.n2 ! a ++ vp.a2 ! a ++ vp.ext ;
             in t.s ++ p.s ++ case o of {
               Main => vp.a0 ++ verb.fin ++ neg ++ compl ;

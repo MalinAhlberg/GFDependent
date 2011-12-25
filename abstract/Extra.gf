@@ -41,7 +41,7 @@ abstract Extra = Cat ** {
   -- 9/4/2010
 
   fun
-    ProDrop : Pron -> Pron ;  -- unstressed subject pronoun becomes []: "(io) sono stanco"
+    ProDrop : (a : Boolean) -> Pron a -> Pron a ;  -- unstressed subject pronoun becomes []: "(io) sono stanco"
     ICompAP : AP Subject -> IComp ;   -- "how old"
     IAdvAdv : Adv Subject -> IAdv ;   -- "how often"
 

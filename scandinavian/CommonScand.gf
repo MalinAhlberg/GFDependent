@@ -234,8 +234,8 @@ oper
   artDef : GenNum -> Str = \gn -> gennumForms "den" "det" "de" ! gn ;
 
   mkPron : (x1,_,_,_,x5 : Str) -> Gender -> Number -> Person -> 
-         {s : NPForm => Str ; a : Agr} = \du,dig,din,ditt,dina,g,n,p -> {
-    s = table {
+         {s : NPerson => NPForm => Str ; a : Agr} = \du,dig,din,ditt,dina,g,n,p -> {
+    s = \\_ => table {
       NPNom => du ;
       NPAcc => dig ;
       NPPoss h c => mkCase c (gennumForms din ditt dina ! h)
@@ -276,14 +276,14 @@ oper
     \det,dess,g,n ->
     mkNP det det dess dess dess g n P3 ;
 
-  regPron : Str -> Str -> Gender -> Number -> {s :NPForm => Str ; a : Agr} =
+  regPron : Str -> Str -> Gender -> Number -> {s : NPerson => NPForm => Str ; a : Agr} =
     \det,dess,g,n ->
     mkPron det det dess dess dess g n P3 ;
 
 -- For $Verb$.
 
   VP = {
-      s : VPForm => {
+      s : Voice => VPForm => {
         fin : Str ;          -- V1 har  ---s1
         inf : Str            -- V2 sagt ---s4
         } ;
@@ -292,6 +292,7 @@ oper
       n2 : Agr => Str ;      -- N2 dig  ---s5  
       a2 : Agr => Str ;  -- A2 idag ---s6
       ext : Str ;            -- S-Ext att hon går   ---s7
+      voice : Voice ;        -- which for the verb should be used in
       --- ea1,ev2,           --- these depend on params of v and a1
       en2,ea2,eext : Bool    -- indicate if the field exists
       } ;
@@ -304,6 +305,7 @@ oper
     n2 = \\a => obj ! a ++ vp.n2 ! a ;
     a2 = vp.a2 ;
     ext = vp.ext ;
+    voice = vp.voice ;
     en2 = True ;
     ea2 = vp.ea2 ;
     eext = vp.eext
@@ -316,6 +318,7 @@ oper
     n2 = \\a => vp.n2 ! a ++ obj ! a ;
     a2 = vp.a2 ;
     ext = vp.ext ;
+    voice = vp.voice ;
     en2 = True ;
     ea2 = vp.ea2 ;
     eext = vp.eext
@@ -328,6 +331,7 @@ oper
     n2 = vp.n2 ;
     a2 = \\agr => vp.a2 ! agr ++ adv ! agr;
     ext = vp.ext ;
+    voice = vp.voice ;
     en2 = vp.en2 ;
     ea2 = True ;
     eext = vp.eext
@@ -340,13 +344,14 @@ oper
     n2 = vp.n2 ;
     a2 = vp.a2 ;
     ext = vp.ext ;
+    voice = vp.voice ;
     en2 = vp.en2 ;
     ea2 = vp.ea2 ;
     eext = vp.eext
     } ;
 
   infVP : VP -> Agr -> Str = \vp,a -> 
-    vp.a0 ++ vp.a1 ! Pos ++ (vp.s ! VPInfinit Simul).inf ++ vp.n2 ! a ++ vp.a2 ! a ++ vp.ext ; --- a1
+    vp.a0 ++ vp.a1 ! Pos ++ (vp.s ! Act ! VPInfinit Simul).inf ++ vp.n2 ! a ++ vp.a2 ! a ++ vp.ext ; --- a1
 
 
 -- For $Sentence$.
@@ -359,7 +364,7 @@ oper
   mkClause : Str -> Agr -> VP -> Clause = \subj,agr,vp -> {
       s = \\t,a,b,o => 
         let 
-          verb  = vp.s  ! VPFinite t a ;
+          verb  = vp.s  ! vp.voice ! VPFinite  t a ;
           neg   = vp.a1 ! b ;
           compl = vp.n2 ! agr ++ vp.a2 ! agr ++ vp.ext
         in

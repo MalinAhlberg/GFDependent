@@ -116,7 +116,7 @@ concrete StructuralSwe of Structural = CatSwe **
       } ; 
     det = DIndef
     } ;
-  whoSg_IP = {s = vem.s ; g = Utr ; n = Sg} ;
+  whoSg_IP = {s = vem.s ! aNPerson ; g = Utr ; n = Sg} ;
   whoPl_IP = {s = \\_ => "vilka" ; g = Utr ; n = Pl} ;
   why_IAdv = ss "varför" ;
   without_Prep = ss "utan" ;
