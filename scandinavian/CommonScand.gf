@@ -351,7 +351,7 @@ oper
     } ;
 
   infVP : VP -> Agr -> Str = \vp,a -> 
-    vp.a0 ++ vp.a1 ! Pos ++ (vp.s ! Act ! VPInfinit Simul).inf ++ vp.n2 ! a ++ vp.a2 ! a ++ vp.ext ; --- a1
+    vp.a0 ++ vp.a1 ! Pos ++ (vp.s ! vp.voice ! VPInfinit Simul).inf ++ vp.n2 ! a ++ vp.a2 ! a ++ vp.ext ; --- a1
 
 
 -- For $Sentence$.
