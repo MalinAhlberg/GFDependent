@@ -10,7 +10,7 @@ abstract Question = Cat ** {
     QuestVP     : IP -> VP -> QCl ;      -- who walks
     QuestSlash  : IP -> ClSlash -> QCl ; -- whom does John love
     QuestIAdv   : IAdv -> Cl -> QCl ;    -- why does John walk
-    QuestIComp  : IComp -> NPSubject -> QCl ;   -- where is John
+    QuestIComp  : IComp -> NPTyped Subject -> QCl ;   -- where is John
 
 -- Interrogative pronouns can be formed with interrogative
 -- determiners, with or without a noun.
@@ -20,7 +20,7 @@ abstract Question = Cat ** {
 
 -- They can be modified with adverbs.
 
-    AdvIP     : IP -> AdvSubject -> IP ;        -- who in Paris --obs! vem i sitt hus?
+    AdvIP     : IP -> AdvTyped Subject -> IP ;        -- who in Paris --obs! vem i sitt hus?
 
 -- Interrogative quantifiers have number forms and can take number modifiers.
 
@@ -32,7 +32,7 @@ abstract Question = Cat ** {
 
 -- They can be modified with other adverbs.
 
-    AdvIAdv   : IAdv -> AdvSubject -> IAdv ;    -- where in Paris --obs! var i sitt hus?
+    AdvIAdv   : IAdv -> AdvTyped Subject -> IAdv ;    -- where in Paris --obs! var i sitt hus?
 
 -- Interrogative complements to copulas can be both adverbs and
 -- pronouns.

@@ -22,6 +22,7 @@ incomplete concrete NounScand of Noun =
       a = case pred.a of {PAg n => agrP3 np.a.g n ; _ => np.a}
       } ;
 
+    -- particle?
     PPartNP _ np v2 = {
       s = \\a,c => np.s ! a ! c ++ v2.s ! (VI (VPtPret (agrAdjNP np.a DIndef) Nom)) ;
       a = np.a

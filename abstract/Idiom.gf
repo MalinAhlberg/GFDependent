@@ -9,15 +9,15 @@ abstract Idiom = Cat ** {
     ImpersCl  : VP -> Cl ;        -- it is hot
     GenericCl : VP -> Cl ;        -- one sleeps
 
-    CleftNP   : NPSubject -> RS -> Cl ; -- it is I who did it
-    CleftAdv  : AdvSubject -> S  -> Cl ; -- it is here she slept
+    CleftNP   : NPTyped Subject -> RS -> Cl ; -- it is I who did it
+    CleftAdv  : AdvTyped Subject -> S  -> Cl ; -- it is here she slept
 
-    ExistNP   : NPSubject -> Cl ;        -- there is a house
+    ExistNP   : NPTyped Subject -> Cl ;        -- there is a house
     ExistIP   : IP -> QCl ;       -- which houses are there
 
     ProgrVP   : VP -> VP ;        -- be sleeping
 
     ImpPl1    : VP -> Utt ;       -- let's go
 
-    ImpP3     : NPSubject -> VP -> Utt ; -- let John walk
+    ImpP3     : NPTyped Subject -> VP -> Utt ; -- let John walk
 }

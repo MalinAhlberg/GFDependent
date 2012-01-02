@@ -52,10 +52,10 @@ incomplete concrete ConjunctionScand of Conjunction =
 
   lincat
     [S] = {s1,s2 : Order => Str} ;
-    [Adv] = {s1,s2 : NPerson => Str} ;
+    [AdvTyped] = {s1,s2 : NPerson => Str} ;
     [IAdv] = {s1,s2 : Str} ;
-    [NP] = {s1,s2 : NPerson => NPForm => Str ; a : Agr} ;
-    [AP] = {s1,s2 : NPerson => AFormPos => Str ; isPre : Bool} ;
+    [NPTyped] = {s1,s2 : NPerson => NPForm => Str ; a : Agr} ;
+    [APTyped] = {s1,s2 : NPerson => AFormPos => Str ; isPre : Bool} ;
     [RS] = {s1,s2 : Agr => RCase => Str ; c : NPForm} ;
     [CN] = {s1,s2 : Number => DetSpecies => Case => Str} ; --- g : NGender ; isMod : Bool} ;
 

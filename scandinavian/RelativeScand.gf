@@ -44,7 +44,7 @@ incomplete concrete RelativeScand of Relative =
 --- The case here could be genitive.
 
     FunRP p np rp = {
-      s = \\g,n,c => np.s ! nominative ++ p.s ++ rp.s ! g ! n ! RPrep True ;
+      s = \\g,n,c => np.s ! aNPerson ! nominative ++ p.s ++ rp.s ! g ! n ! RPrep True ;
       a = RAg np.a.g np.a.n np.a.p
       } ;
 

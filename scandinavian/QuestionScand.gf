@@ -53,7 +53,7 @@ incomplete concrete QuestionScand of Question =
       s = \\t,a,p => 
             let 
               cls = 
-                (mkClause (np.s ! nominative) np.a (predV verbBe)).s ! t ! a ! p ;
+                (mkClause (np.s ! aNPerson ! nominative) np.a (predV verbBe)).s ! t ! a ! p ;
               why = icomp.s ! agrAdjNP np.a DIndef
             in table {
               QDir   => why ++ cls ! Inv ;
@@ -66,7 +66,7 @@ incomplete concrete QuestionScand of Question =
       } ;
 
     AdvIP ip adv = {
-      s = \\c => ip.s ! c ++ adv.s ;
+      s = \\c => ip.s ! c ++ adv.s ! aNPerson ;
       g = ip.g ;
       n = ip.n
       } ;
@@ -93,7 +93,7 @@ incomplete concrete QuestionScand of Question =
       det = idet.det
       } ;
 
-    AdvIAdv i a = {s = i.s ++ a.s} ;
+    AdvIAdv i a = {s = i.s ++ a.s ! aNPerson} ;
 
     CompIAdv a = {s = \\_ => a.s} ;
     CompIP ip = {s = \\_ => ip.s ! nominative} ;

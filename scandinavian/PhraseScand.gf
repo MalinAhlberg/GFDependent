@@ -12,17 +12,17 @@ incomplete concrete PhraseScand of Phrase =
 
     UttIP ip = {s = ip.s ! nominative} ; --- Acc also
     UttIAdv iadv = iadv ;
-    UttNP np = {s = np.s ! accusative} ;
+    UttNP _ np = {s = np.s ! aNPerson ! accusative} ;
     UttVP vp = {s = infMark ++ infVP vp (agrP3 Utr Sg)} ;
-    UttAdv adv = adv ;
+    UttAdv adv = {s = adv.s ! aNPerson } ;
     UttCN n = {s = n.s ! Sg ! DIndef ! Nom} ;
-    UttAP n = {s = n.s ! Strong (GSg Utr)} ;
+    UttAP _ n = {s = n.s ! aNPerson !  Strong (GSg Utr)} ;
     UttCard n = {s = n.s ! neutrum} ;
 
     NoPConj = {s = []} ;
     PConjConj conj = {s = conj.s2} ;
 
     NoVoc = {s = []} ;
-    VocNP np = {s = "," ++ np.s ! nominative} ;
+    VocNP np = {s = "," ++ np.s ! aNPerson ! nominative} ;
 
 }

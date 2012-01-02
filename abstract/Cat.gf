@@ -23,12 +23,12 @@ abstract Cat = Common -[Adv] ** {
   cat
 
   Boolean ;
-  NPSubject ;
-  NPObject ;
-  APSubject ;
-  APObject ;
-  AdvSubject ;
-  AdvObject ;
+--  NPSubject ;
+--  NPObject ;
+--  APSubject ;
+--  APObject ;
+--  AdvSubject ;
+--  AdvObject ;
   data 
     Subject : Boolean ;
     Object : Boolean ;
@@ -38,18 +38,24 @@ abstract Cat = Common -[Adv] ** {
     def isObj Object _      = Object ; 
     def isObj _       _     = Subject ; 
   fun
-    NPSub : NP Subject -> NPSubject ;
-    NPObj : NP Object -> NPObject ;
-    NPCoersion : NP Subject -> NP Object ;
-    APSub : AP Subject -> APSubject ;
-    APObj : (a : Boolean) -> AP a -> APObject ;
-    AdvSub : Adv Subject -> AdvSubject ;
-    AdvObj : (a : Boolean) -> Adv a -> AdvObject ;
-
+    NPSub : NP -> NPTyped Subject ;
+    NPObj : NP -> NPTyped Object ;
+    --NPCoersion : NP Subject -> NP Object ;
+    APSub : AP   -> APTyped Subject ;
+    APObj : AP   -> APTyped Object ;
+    AdvSub : Adv -> AdvTyped Subject ;
+    AdvObj : Adv -> AdvTyped Object ;
+    DetSub : Det -> DetTyped Subject ;
+    DetObj : Det -> DetTyped Object ;
+    QuantSub : Quant -> QuantTyped Subject ;
+    QuantObj : Quant -> QuantTyped Object ;
+    PronSub : Pron -> PronTyped Subject ;
+    PronObj : Pron -> PronTyped Object ;
 
 
  cat
-  Adv Boolean ;
+  Adv ;
+  AdvTyped Boolean ;
 --2 Sentences and clauses
 
 -- Constructed in [Sentence Sentence.html], and also in
@@ -92,7 +98,8 @@ abstract Cat = Common -[Adv] ** {
 
 -- Constructed in [Adjective Adjective.html].
 
-    AP Boolean ;    -- adjectival phrase                   e.g. "very warm"
+    AP ;               -- adjectival phrase                   e.g. "very warm"
+    APTyped Boolean ;
 
 --2 Nouns and noun phrases
 
@@ -104,11 +111,15 @@ abstract Cat = Common -[Adv] ** {
 -- as defined in [Noun Noun.html].
 
     CN ;     -- common noun (without determiner)    e.g. "red house"
-    NP Boolean ;     -- noun phrase (subject or object)     e.g. "the red house"
-    Pron Boolean ;   -- personal pronoun                    e.g. "she"
-    Det  Boolean;    -- determiner phrase                   e.g. "those seven"
+    NP ;     -- noun phrase (subject or object)     e.g. "the red house"
+    NPTyped Boolean ;     -- noun phrase (subject or object)     e.g. "the red house"
+    PronTyped Boolean ;   -- personal pronoun                    e.g. "she"
+    Pron ;   -- personal pronoun                    e.g. "she"
+    DetTyped  Boolean;    -- determiner phrase                   e.g. "those seven"
+    Det ;    -- determiner phrase                   e.g. "those seven"
     Predet ; -- predeterminer (prefixed Quant)      e.g. "all"
-    Quant Boolean ;  -- quantifier ('nucleus' of Det)       e.g. "this/these"
+    Quant ;  -- quantifier ('nucleus' of Det)       e.g. "this/these"
+    QuantTyped Boolean ;  -- quantifier ('nucleus' of Det)       e.g. "this/these"
     Num ;    -- number determining element          e.g. "seven"
     Card ;   -- cardinal number                     e.g. "seven"
     Ord ;    -- ordinal number (used in Det)        e.g. "seventh"

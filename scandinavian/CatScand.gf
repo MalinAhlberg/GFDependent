@@ -10,18 +10,24 @@ incomplete concrete CatScand of Cat =
 -- On the surface we use different types, NPSubject vs. NPObject in 
 
   lin
-   NPSub np = {s = np.s ! aNPerson ; a = np.a} ; 
+   NPSub np = np ; --{s = np.s ! aNPerson ; a = np.a} ; 
    NPObj np = np ;
-   NPCoersion np = np ; 
-   APSub ap = {s = ap.s ! aNPerson ; isPre = ap.isPre} ; 
-   APObj _ ap = ap ;
-   AdvSub a = {s = a.s ! aNPerson } ; 
-   AdvObj _ a = a ;
+   --NPCoersion np = np ; 
+   AdvSub a = a ; --{s = a.s ! aNPerson } ; 
+   AdvObj a = a ;
+   APSub a = a ;
+   APObj a = a ;
+   DetSub a = a ;
+   DetObj a = a ;
+   PronSub a = a ; 
+   PronObj a = a ;
+   QuantSub a = a ; 
+   QuantObj a = a ;
 
   lincat
    Boolean = {} ;    
-   Adv,AdvObject = {s : NPerson => Str} ;
-   AdvSubject = {s : Str} ;
+   Adv,AdvTyped = {s : NPerson => Str} ;
+   --AdvSubject = {s : Str} ;
 
 -- Tensed/Untensed
 
@@ -78,9 +84,9 @@ incomplete concrete CatScand of Cat =
 
 -- Adjective
 
-    AP = {s : NPerson => AFormPos => Str ; isPre : Bool } ; 
-    APObject = {s : NPerson => AFormPos => Str ; isPre : Bool } ; 
-    APSubject = {s :  AFormPos => Str ; isPre : Bool } ; 
+    AP,APTyped = {s : NPerson => AFormPos => Str ; isPre : Bool } ; 
+   -- APObject = {s : NPerson => AFormPos => Str ; isPre : Bool } ; 
+   -- APSubject = {s :  AFormPos => Str ; isPre : Bool } ; 
 
 -- Noun
 
@@ -93,12 +99,12 @@ incomplete concrete CatScand of Cat =
    --  gives information about the antecedent; "(_han_ såg) _sin_ katt"
    -- Det, Quant also use this parameter, their other arguments regards
    -- the quantified noun phrase.
-    NP,NPObject,Pron  = {s : NPerson => NPForm => Str ; a : Agr} ;
-    NPSubject = {s : NPForm => Str ; a : Agr} ;
+    NP,NPTyped,Pron,PronTyped  = {s : NPerson => NPForm => Str ; a : Agr} ;
+    --NPSubject ,NPObject= {s : NPForm => Str ; a : Agr} ;
 
     CN = {s : Number => DetSpecies => Case => Str ; g : NGender ; isMod : Bool} ;
-    Det = {s,sp : NPerson => Bool => NGender => Str ; n : Number ; det : DetSpecies} ;
-    Quant = {s,sp : NPerson => Number => Bool => Bool => NGender => Str ; det : DetSpecies} ;
+    DetTyped, Det = {s,sp : NPerson => Bool => NGender => Str ; n : Number ; det : DetSpecies} ;
+    QuantTyped,Quant = {s,sp : NPerson => Number => Bool => Bool => NGender => Str ; det : DetSpecies} ;
     Predet = {s : Gender => Number => Str ; p : Str ; a : PredetAgr} ;
     Num = {s : NGender => Str ; isDet : Bool ; n : Number} ;
     Card = {s : NGender => Str ; n : Number} ;

@@ -13,21 +13,21 @@ abstract Verb = Cat ** {
     ComplVV  : VV  -> VP -> VP ;  -- want to run
     ComplVS  : VS  -> S  -> VP ;  -- say that she runs
     ComplVQ  : VQ  -> QS -> VP ;  -- wonder who runs
-    ComplVA  : VA  -> APObject -> VP ;  -- they become red
+    ComplVA  : VA  -> APTyped Object -> VP ;  -- they become red
 
     SlashV2a : V2        -> VPSlash ;  -- love (it)
-    Slash2V3 : V3  -> NPObject -> VPSlash ;  -- give it (to her)
-    Slash3V3 : V3  -> NPObject -> VPSlash ;  -- give (it) to her
+    Slash2V3 : V3  -> NPTyped Object -> VPSlash ;  -- give it (to her)
+    Slash3V3 : V3  -> NPTyped Object -> VPSlash ;  -- give (it) to her
 
     SlashV2V : V2V -> VP -> VPSlash ;  -- beg (her) to go
     SlashV2S : V2S -> S  -> VPSlash ;  -- answer (to him) that it is good
     SlashV2Q : V2Q -> QS -> VPSlash ;  -- ask (him) who came
-    SlashV2A : V2A -> APObject -> VPSlash ;  -- paint (it) red
+    SlashV2A : V2A -> APTyped Object -> VPSlash ;  -- paint (it) red
 
-    ComplSlash : VPSlash -> NPObject -> VP ; -- love it
+    ComplSlash : VPSlash -> NPTyped Object -> VP ; -- love it
 
     SlashVV    : VV  -> VPSlash -> VPSlash ;       -- want to buy
-    SlashV2VNP : V2V -> NPObject -> VPSlash -> VPSlash ; -- beg me to buy
+    SlashV2VNP : V2V -> NPTyped Object -> VPSlash -> VPSlash ; -- beg me to buy
 
 --2 Other ways of forming verb phrases
 
@@ -53,10 +53,10 @@ abstract Verb = Cat ** {
 -- a distinction between adverbs that are attached in the end
 -- vs. next to (or before) the verb.
 
-    AdvVP    : VP -> AdvObject -> VP ;        -- sleep here
+    AdvVP    : VP -> AdvTyped Object -> VP ;        -- sleep here
     AdVVP    : AdV -> VP -> VP ;        -- always sleep
 
-    AdvVPSlash : VPSlash -> AdvObject -> VPSlash ;  -- use (it) here
+    AdvVPSlash : VPSlash -> AdvTyped Object -> VPSlash ;  -- use (it) here
     AdVVPSlash : AdV -> VPSlash -> VPSlash ;  -- always use (it)
    
 
@@ -68,9 +68,9 @@ abstract Verb = Cat ** {
 
 -- Adjectival phrases, noun phrases, and adverbs can be used.
 
-    CompAP   : APObject -> Comp ;            -- (be) small
-    CompNP   : NPObject  -> Comp ;            -- (be) the man
-    CompAdv  : AdvObject -> Comp ;            -- (be) here
+    CompAP   : APTyped Object -> Comp ;            -- (be) small
+    CompNP   : NPTyped Object  -> Comp ;            -- (be) the man
+    CompAdv  : AdvTyped Object -> Comp ;            -- (be) here
     CompCN   : CN  -> Comp ;            -- (be) a man/men
 
 -- Copula alone

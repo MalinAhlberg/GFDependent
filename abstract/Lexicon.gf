@@ -3,7 +3,7 @@ fun
   add_V3 : V3 ;
   airplane_N : N ;
   alas_Interj : Interj ;
-  already_Adv : Adv Subject ;
+  already_Adv : Adv ;
   animal_N : N ;
   answer_V2S : V2S ;
   apartment_N : N ;
@@ -93,7 +93,7 @@ fun
   eye_N : N ;
   factory_N : N ;
   fall_V : V ;
-  far_Adv : Adv Subject ;
+  far_Adv : Adv ;
   father_N2 : N2 ;
   fat_N : N ;
   fear_VS : VS ;
@@ -198,7 +198,7 @@ fun
   newspaper_N : N ;
   night_N : N ;
   nose_N : N ;
-  now_Adv : Adv Subject ;
+  now_Adv : Adv ;
   number_N : N ;
   oil_N : N ;
   old_A : A ;
@@ -310,7 +310,7 @@ fun
   think_V : V ;
   throw_V2 : V2 ;
   tie_V2 : V2 ;
-  today_Adv : Adv Subject ;
+  today_Adv : Adv ;
   tongue_N : N ;
   tooth_N : N ;
   train_N : N ;

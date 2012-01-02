@@ -34,31 +34,31 @@ abstract Structural = Cat ** {
   during_Prep : Prep ;
   either7or_DConj : Conj ; -- either...or
 ---b  either7or_DConj : DConj ;
-  every_Det : Det Subject ;
-  everybody_NP : NP Subject ;  -- everybody
-  everything_NP : NP Subject ;
-  everywhere_Adv : Adv Subject ;
+  every_Det : Det ;
+  everybody_NP : NP ;  -- everybody
+  everything_NP : NP ;
+  everywhere_Adv : Adv ;
 ---  first_Ord : Ord ; DEPRECATED
-  few_Det : Det Subject ;
+  few_Det : Det  ;
   for_Prep : Prep ;
   from_Prep : Prep ;
-  he_Pron : Pron Subject ;
-  here_Adv : Adv Subject ;
-  here7to_Adv : Adv Subject ; -- to here
-  here7from_Adv : Adv Subject ;  -- from here
+  he_Pron : Pron ;
+  here_Adv : Adv ;
+  here7to_Adv : Adv  ; -- to here
+  here7from_Adv : Adv ;  -- from here
   how_IAdv : IAdv ;
   how8many_IDet : IDet ;
   how8much_IAdv : IAdv ;
-  i_Pron : Pron Subject ;
+  i_Pron : Pron  ;
   if_Subj : Subj ;
   in8front_Prep : Prep ; -- in front of
   in_Prep : Prep ;
-  it_Pron : Pron Subject ;
+  it_Pron : Pron ;
   less_CAdv : CAdv ;
-  many_Det : Det Subject ;
+  many_Det : Det ;
   more_CAdv : CAdv ;
   most_Predet : Predet ;
-  much_Det : Det Subject ;
+  much_Det : Det ;
   must_VV : VV ;
 ---b  no_Phr : Phr ;
   no_Utt : Utt ;
@@ -71,28 +71,28 @@ abstract Structural = Cat ** {
   please_Voc : Voc ;
   possess_Prep : Prep ; -- of (possessive)
   quite_Adv : AdA ;
-  she_Pron : Pron Subject ;
+  she_Pron : Pron  ;
   so_AdA : AdA ;
-  someSg_Det : Det Subject ;
-  somePl_Det : Det Subject ;
-  somebody_NP : NP Subject ;
-  something_NP : NP Subject ;
-  somewhere_Adv : Adv Subject ;
-  that_Quant : Quant Subject ;
+  someSg_Det : Det ;
+  somePl_Det : Det ;
+  somebody_NP : NP ;
+  something_NP : NP ;
+  somewhere_Adv : Adv ;
+  that_Quant : Quant  ;
   that_Subj : Subj ;
-  there_Adv : Adv Subject ;
-  there7to_Adv : Adv Subject ; -- to there
-  there7from_Adv : Adv Subject ; -- from there
+  there_Adv : Adv  ;
+  there7to_Adv : Adv  ; -- to there
+  there7from_Adv : Adv  ; -- from there
   therefore_PConj : PConj ;
-  they_Pron : Pron Subject ; 
-  this_Quant : Quant Subject ;
+  they_Pron : Pron  ; 
+  this_Quant : Quant ;
   through_Prep : Prep ;
   to_Prep : Prep ;
   too_AdA : AdA ;
   under_Prep : Prep ;
   very_AdA : AdA ;
   want_VV : VV ;
-  we_Pron : Pron Subject ;
+  we_Pron : Pron  ;
   whatPl_IP : IP ; -- what (plural)
   whatSg_IP : IP ; -- what (singular)
   when_IAdv : IAdv ;
@@ -106,17 +106,17 @@ abstract Structural = Cat ** {
   without_Prep : Prep ;
 ---b  yes_Phr : Phr ;
   yes_Utt : Utt ;
-  youSg_Pron : Pron Subject ; -- you (singular)
-  youPl_Pron : Pron Subject ; -- you (plural)
-  youPol_Pron : Pron Subject ; -- you (polite)
+  youSg_Pron : Pron  ; -- you (singular)
+  youPl_Pron : Pron  ; -- you (plural)
+  youPol_Pron : Pron ; -- you (polite)
 
-  no_Quant : Quant Subject ; 
+  no_Quant : Quant ; 
   not_Predet : Predet ;
   if_then_Conj : Conj ;
   at_least_AdN : AdN ;
   at_most_AdN : AdN ;
-  nobody_NP : NP Subject ;
-  nothing_NP : NP Subject ;
+  nobody_NP : NP ;
+  nothing_NP : NP ;
   except_Prep : Prep ;
 
   as_CAdv : CAdv ;

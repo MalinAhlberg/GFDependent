@@ -19,25 +19,26 @@ abstract Conjunction = ConjunctionX - [BaseNP,ConsNP,BaseAP,ConsAP,BaseAdv,ConsA
   fun
     ConjS    : Conj -> [S] -> S ;       -- "he walks and she runs"
     ConjRS   : Conj -> [RS] -> RS ;     -- "who walks and whose mother runs"
-    ConjNP   : (b : Boolean) ->  Conj -> [NP b] -> NP b ;     -- "she or we"
-    ConjAdv  : (b : Boolean) -> Conj -> [Adv b] -> Adv b ;   -- "here or there"
+    ConjNP   : (b : Boolean) ->  Conj -> [NPTyped b] -> NPTyped b ;     -- "she or we"
+    ConjAdv  : (b : Boolean) -> Conj -> [AdvTyped b] -> AdvTyped b ;   -- "here or there"
+    ConjAP   : (b : Boolean) -> Conj -> [APTyped b] -> APTyped b ;   -- "here or there"
     ConjIAdv : Conj -> [IAdv] -> IAdv ; -- "where and with whom"
     ConjCN   : Conj -> [CN] -> CN ;     -- "man and woman"
 
 -- special list constructors for the dependent types
-    BaseNP : (a,b : Boolean) -> NP a -> NP b -> [NP (isObj a b)] ;
-    ConsNP : (a,b : Boolean) -> NP a -> [NP b] -> [NP (isObj a b)] ;
-    BaseAdv : (a,b : Boolean) -> Adv a -> Adv b -> [Adv (isObj a b)] ;
-    ConsAdv : (a,b : Boolean) -> Adv a -> [Adv b] -> [Adv (isObj a b)] ;
-    BaseAP : (a,b : Boolean) -> AP a -> AP b -> [AP (isObj a b)] ;
-    ConsAP : (a,b : Boolean) -> AP a -> [AP b] -> [AP (isObj a b)] ;
+    BaseNP : (a,b : Boolean) -> NPTyped a -> NPTyped b -> [NPTyped (isObj a b)] ;
+    ConsNP : (a,b : Boolean) -> NPTyped a -> [NPTyped b] -> [NPTyped (isObj a b)] ;
+    BaseAdv : (a,b : Boolean) -> AdvTyped a -> AdvTyped b -> [AdvTyped (isObj a b)] ;
+    ConsAdv : (a,b : Boolean) -> AdvTyped a -> [AdvTyped b] -> [AdvTyped (isObj a b)] ;
+    BaseAP : (a,b : Boolean) -> APTyped a -> APTyped b -> [APTyped (isObj a b)] ;
+    ConsAP : (a,b : Boolean) -> APTyped a -> [APTyped b] -> [APTyped (isObj a b)] ;
 
 --2 List constructors
 
 -- The list constructors are derived from the list notation and therefore
 -- not given explicitly. But here are their type signatures:
 
-  --  BaseC : C -> C   -> [C] ;  -- for C = S, AP, NP, Adv
+  --  BaseC : C -> C   -> [C] ;  -- for C = S, AP, NPTyped, Adv
   --  ConsC : C -> [C] -> [C] ;
 }
 

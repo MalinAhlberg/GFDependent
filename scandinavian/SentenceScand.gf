@@ -4,7 +4,7 @@ incomplete concrete SentenceScand of Sentence =
   flags optimize=all_subs ;
 
   lin
-    PredVP np vp = mkClause (np.s ! nominative) np.a vp ;
+    PredVP np vp = mkClause (np.s ! aNPerson ! nominative) np.a vp ;
 
     PredSCVP sc vp = mkClause sc.s (agrP3 Neutr Sg) vp ;
 
@@ -19,7 +19,7 @@ incomplete concrete SentenceScand of Sentence =
 
     SlashVP np vp = 
       mkClause 
-        (np.s ! nominative) np.a 
+        (np.s ! aNPerson ! nominative ) np.a 
         vp **
       {n3 = vp.n3 ; c2 = vp.c2 ; agr = np.a } ;
 
@@ -34,7 +34,7 @@ incomplete concrete SentenceScand of Sentence =
 
     SlashVS np vs slash = 
       mkClause
-        (np.s ! nominative) np.a 
+        (np.s ! aNPerson ! nominative) np.a 
         (insertObj (\\_ => conjThat ++ slash.s ! Sub) (predV vs)) **
       {n3 = slash.n3 ; c2 = slash.c2 ; agr = np.a } ;
 
@@ -58,8 +58,8 @@ incomplete concrete SentenceScand of Sentence =
       c2 = cl.c2
     } ;
 
-    AdvS a s = {s = \\o => a.s ++ s.s ! Inv} ;
-    ExtAdvS a s = {s = \\o => a.s ++ "," ++ s.s ! Inv} ;
+    AdvS a s = {s = \\o => a.s ! aNPerson ++ s.s ! Inv} ;
+    ExtAdvS a s = {s = \\o => a.s ! aNPerson ++ "," ++ s.s ! Inv} ;
 
     RelS s r = {s = \\o => s.s ! o ++ "," ++ r.s ! agrP3 Neutr Sg ! RPrep True } ; --- vilket
 

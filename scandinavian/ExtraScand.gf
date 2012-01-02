@@ -56,7 +56,7 @@ incomplete concrete ExtraScand of ExtraScandAbs = CatScand **
 
     PredVPS np vpi = 
       let
-        subj = np.s ! nominative ;
+        subj = np.s ! aNPerson ! nominative ;
         agr  = np.a ;
       in {
         s = \\o => 
