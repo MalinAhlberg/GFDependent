@@ -1,5 +1,5 @@
 --# -path=.:../scandinavian:../abstract:../common:prelude
-concrete ExtraSwe of ExtraSweAbs = ExtraScandSwe - [FocAdv] ,
+concrete ExtraSwe of ExtraSweAbs = ExtraScandSwe - [TopAdv] ,
                                    ParadigmsSwe - [nominative] **
  open CommonScand, ResSwe, ParamX, VerbSwe, Prelude, DiffSwe, StructuralSwe, MorphoSwe,
       NounSwe, Coordination, AdjectiveSwe, SentenceSwe, RelativeSwe in {
@@ -8,7 +8,7 @@ lincat
  ReflNP  = NP ;
  PronAQ = A ; -- 'en sådan' 
  PronAD = A ; -- 'fler' 
- AdvFoc = Adv ;
+ AdvTop = Adv ;
  RelVSCl = {s : Agr => RCase => Str};
  
  
@@ -35,7 +35,7 @@ lin
     {s = \\ag,rc => t.s ++ p.s ++ vilket ++ cl.s ! t.t ! t.a ! p.p ! Sub } ;
 
  
-  AdvFocVP adv vp = {s = \\vpf => {fin = adv.s ++ (vp.s ! vpf).fin ;
+  AdvTopVP adv vp = {s = \\vpf => {fin = adv.s ++ (vp.s ! vpf).fin ;
                                  inf = (vp.s ! vpf).inf};
                    a1 = vp.a1 ; n2 = vp.n2 ; a2 = vp.a2 ; ext = vp.ext ;
                    en2 = vp.en2 ; ea2 = vp.ea2; eext = vp.eext } ;
@@ -67,7 +67,7 @@ lin
 
 
 lin
-  FocVP vp np = {
+  TopVP vp np = {
       s = \\t,a,p =>
         let
           subj = np.s ! CommonScand.nominative ;
@@ -90,7 +90,7 @@ lin
   oper do_V : V = mkV "göra" "gör" "gör" "gjorde" "gjort" "gjord" ;
 
 lin
-  FocAP ap np    = 
+  TopAP ap np    = 
   {s = \\t,a,p => 
    let vp = UseComp ap ; 
        vps = vp.s ! VPFinite t a;
@@ -99,7 +99,7 @@ lin
     ++ negation ! p++ vps.inf };
 
 
-  FocVV vv vp np = 
+  TopVV vv vp np = 
   {s = \\t,a,p =>
     let vps = vp.s ! VPInfinit Simul ;
         vvp = UseV vv ;

@@ -2,7 +2,7 @@
 -- Structures special for Swedish. These are not implemented in other
 -- Scandinavian languages.
 
-abstract ExtraSweAbs = ExtraScandAbs -[FocAP] ** {
+abstract ExtraSweAbs = ExtraScandAbs -[TopAP] ** {
 
 cat ReflNP ; 
     PronAD ; -- relational pronouns which can act like adjectives and
@@ -11,7 +11,7 @@ cat ReflNP ;
              -- quantifiers. 'sådan'
   
 
-    AdvFoc ; -- foucsing adverbs 'bara'. acts as predeterminers, normal
+    AdvTop ; -- foucsing adverbs 'bara'. acts as predeterminers, normal
              -- adverbs or before finite verb
     
     RelVSCl ; 
@@ -21,12 +21,12 @@ fun
   RelVS : S -> RelVSCl -> S ; -- hon sover, vilket vi vet
   RelSlashVS : Temp -> Pol -> VS -> NP -> RelVSCl ;  -- vilket vi vet
 
-  FocAP : Comp -> NP -> Foc ;
+  TopAP : Comp -> NP -> Top ;
 
   DetNP_utr : Det -> NP ; -- den här
 
-  AdvFocVP : AdvFoc -> VP -> VP ; -- (han) bara log
-  PredetAdvF : AdvFoc -> Predet ; -- bara (barn), inte ens (katten)
+  AdvTopVP : AdvTop -> VP -> VP ; -- (han) bara log
+  PredetAdvF : AdvTop -> Predet ; -- bara (barn), inte ens (katten)
 
 
   DetPronAD : PronAD -> Det ;
@@ -64,7 +64,7 @@ fun
 
 ----------------- Predeterminers,Quantifiers,Determiners
 
-   bara_AdvFoc : AdvFoc ;
+   bara_AdvTop : AdvTop ;
 
   sadana_PronAQ : PronAQ ;
   fler_PronAD : PronAD ;
