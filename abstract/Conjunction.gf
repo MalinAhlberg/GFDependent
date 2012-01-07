@@ -19,19 +19,19 @@ abstract Conjunction = ConjunctionX - [BaseNP,ConsNP,BaseAP,ConsAP,BaseAdv,ConsA
   fun
     ConjS    : Conj -> [S] -> S ;       -- "he walks and she runs"
     ConjRS   : Conj -> [RS] -> RS ;     -- "who walks and whose mother runs"
-    ConjNP   : (b : Boolean) ->  Conj -> [NPTyped b] -> NPTyped b ;     -- "she or we"
-    ConjAdv  : (b : Boolean) -> Conj -> [AdvTyped b] -> AdvTyped b ;   -- "here or there"
-    ConjAP   : (b : Boolean) -> Conj -> [APTyped b] -> APTyped b ;   -- "here or there"
+    ConjNP   : (b : NPType) ->  Conj -> [NPTyped b] -> NPTyped b ;     -- "she or we"
+    ConjAdv  : (b : NPType) -> Conj -> [AdvTyped b] -> AdvTyped b ;   -- "here or there"
+    ConjAP   : (b : NPType) -> Conj -> [APTyped b] -> APTyped b ;   -- "here or there"
     ConjIAdv : Conj -> [IAdv] -> IAdv ; -- "where and with whom"
     ConjCN   : Conj -> [CN] -> CN ;     -- "man and woman"
 
 -- special list constructors for the dependent types
-    BaseNP : (a,b : Boolean) -> NPTyped a -> NPTyped b -> [NPTyped (isObj a b)] ;
-    ConsNP : (a,b : Boolean) -> NPTyped a -> [NPTyped b] -> [NPTyped (isObj a b)] ;
-    BaseAdv : (a,b : Boolean) -> AdvTyped a -> AdvTyped b -> [AdvTyped (isObj a b)] ;
-    ConsAdv : (a,b : Boolean) -> AdvTyped a -> [AdvTyped b] -> [AdvTyped (isObj a b)] ;
-    BaseAP : (a,b : Boolean) -> APTyped a -> APTyped b -> [APTyped (isObj a b)] ;
-    ConsAP : (a,b : Boolean) -> APTyped a -> [APTyped b] -> [APTyped (isObj a b)] ;
+    BaseNP : (a,b : NPType) -> NPTyped a -> NPTyped b -> [NPTyped (isObj a b)] ;
+    ConsNP : (a,b : NPType) -> NPTyped a -> [NPTyped b] -> [NPTyped (isObj a b)] ;
+    BaseAdv : (a,b : NPType) -> AdvTyped a -> AdvTyped b -> [AdvTyped (isObj a b)] ;
+    ConsAdv : (a,b : NPType) -> AdvTyped a -> [AdvTyped b] -> [AdvTyped (isObj a b)] ;
+    BaseAP : (a,b : NPType) -> APTyped a -> APTyped b -> [APTyped (isObj a b)] ;
+    ConsAP : (a,b : NPType) -> APTyped a -> [APTyped b] -> [APTyped (isObj a b)] ;
 
 --2 List constructors
 

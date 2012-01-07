@@ -25,7 +25,7 @@ incomplete concrete CatScand of Cat =
    QuantObj a = a ;
 
   lincat
-   Boolean = {} ;    
+   NounType = {} ;    
    Adv,AdvTyped = {s : NPerson => Str} ;
    --AdvSubject = {s : Str} ;
 

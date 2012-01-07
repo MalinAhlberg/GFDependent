@@ -12,26 +12,26 @@ abstract Noun = Cat ** {
 --
 --
   fun
-    DetCN   : (a : Boolean) -> DetTyped a -> CN -> NPTyped a ;   -- the man
-    UsePN   : (a : Boolean) -> PN -> NPTyped a ;          -- John
-    UsePron : (a : Boolean) -> PronTyped a -> NPTyped a ;        -- he
+    DetCN   : (a : NPType) -> DetTyped a -> CN -> NPTyped a ;   -- the man
+    UsePN   : (a : NPType) -> PN -> NPTyped a ;          -- John
+    UsePron : (a : NPType) -> PronTyped a -> NPTyped a ;        -- he
 
 -- Pronouns are defined in the module [``Structural`` Structural.html].
 
 -- A noun phrase already formed can be modified by a $Predet$erminer.
 
-    PredetNP : (a : Boolean) -> Predet -> NPTyped a -> NPTyped a; -- only the man 
+    PredetNP : (a : NPType) -> Predet -> NPTyped a -> NPTyped a; -- only the man 
 
 -- A noun phrase can also be postmodified by the past participle of a
 -- verb, by an adverb, or by a relative clause
 
-    PPartNP :  (a : Boolean) -> NPTyped a -> V2  -> NPTyped a ;    -- the man seen
-    AdvNP   :  (a,b : Boolean) -> NPTyped a -> AdvTyped b -> NPTyped (isObj a b) ;    -- Paris today
-    RelNP   :  (a : Boolean) -> NPTyped a -> RS  -> NPTyped a ;    -- Paris, which is here
+    PPartNP :  (a : NPType) -> NPTyped a -> V2  -> NPTyped a ;    -- the man seen
+    AdvNP   :  (a,b : NPType) -> NPTyped a -> AdvTyped b -> NPTyped (isObj a b) ;    -- Paris today
+    RelNP   :  (a : NPType) -> NPTyped a -> RS  -> NPTyped a ;    -- Paris, which is here
 
 -- Determiners can form noun phrases directly.
 
-    DetNP   : (a : Boolean) -> DetTyped a -> NPTyped a ;  -- these five
+    DetNP   : (a : NPType) -> DetTyped a -> NPTyped a ;  -- these five
 
 
 --2 Determiners
@@ -39,8 +39,8 @@ abstract Noun = Cat ** {
 -- The determiner has a fine-grained structure, in which a 'nucleus'
 -- quantifier and an optional numeral can be discerned.
 
-    DetQuant    : (a : Boolean) -> QuantTyped a -> Num ->        DetTyped a ;  -- these five
-    DetQuantOrd : (a : Boolean) -> QuantTyped a -> Num -> Ord -> DetTyped a ;  -- these five best
+    DetQuant    : (a : NPType) -> QuantTyped a -> Num ->        DetTyped a ;  -- these five
+    DetQuantOrd : (a : NPType) -> QuantTyped a -> Num -> Ord -> DetTyped a ;  -- these five best
 
 -- Whether the resulting determiner is singular or plural depends on the
 -- cardinal.
@@ -84,13 +84,13 @@ abstract Noun = Cat ** {
 -- not distinguish mass nouns from other common nouns, which can result
 -- in semantically odd expressions.
 
-    MassNP     : (a : Boolean) ->  CN -> NPTyped a ;            -- (beer)
+    MassNP     : (a : NPType) ->  CN -> NPTyped a ;            -- (beer)
 
 -- Pronouns have possessive forms. Genitives of other kinds
 -- of noun phrases are not given here, since they are not possible
 -- in e.g. Romance languages. They can be found in $Extra$ modules.
 
-    PossPron : (a : Boolean) -> PronTyped a -> QuantTyped a ;    -- my (house)
+    PossPron : (a : NPType) -> PronTyped a -> QuantTyped a ;    -- my (house)
 
 -- Other determiners are defined in [Structural Structural.html].
 

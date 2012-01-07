@@ -11,9 +11,9 @@ abstract ConjunctionX = Cat ** {
   cat
     [S]{2} ; 
     [RS]{2} ; 
-    [AdvTyped Boolean]{2} ; 
-    [NPTyped Boolean]{2} ; 
-    [APTyped Boolean]{2} ;
+    [AdvTyped NPType]{2} ; 
+    [NPTyped NPType]{2} ; 
+    [APTyped NPType]{2} ;
     [IAdv]{2} ;
     [CN] {2} ;
 

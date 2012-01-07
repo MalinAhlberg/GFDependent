@@ -7,7 +7,7 @@
 abstract Extra = Cat ** {
 
   fun
-    GenNP       : (a : Boolean) -> NPTyped a -> QuantTyped a;       -- this man's
+    GenNP       : (a : NPType) -> NPTyped a -> QuantTyped a;       -- this man's
     GenIP       : IP -> IQuant ;      -- whose
     GenRP       : Num -> CN -> RP ;   -- whose car
     ComplBareVS : VS -> S -> VP ;     -- know you go
@@ -41,7 +41,7 @@ abstract Extra = Cat ** {
   -- 9/4/2010
 
   fun
-    ProDrop : (a : Boolean) -> PronTyped a -> PronTyped a ;  -- unstressed subject pronoun becomes []: "(io) sono stanco"
+    ProDrop : (a : NPType) -> PronTyped a -> PronTyped a ;  -- unstressed subject pronoun becomes []: "(io) sono stanco"
     ICompAP : APTyped Subject -> IComp ;   -- "how old"
     IAdvAdv : AdvTyped Subject -> IAdv ;   -- "how often"
 

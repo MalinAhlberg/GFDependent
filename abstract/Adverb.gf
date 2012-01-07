@@ -8,17 +8,17 @@ abstract Adverb = Cat ** {
 -- prepositions from noun phrases.
 
     PositAdvAdj : A -> Adv ;                 -- warmly
-    PrepNP      : (a : Boolean) -> Prep -> NPTyped a -> AdvTyped a ;        -- in the house
+    PrepNP      : (a : NPType) -> Prep -> NPTyped a -> AdvTyped a ;        -- in the house
 
 -- Comparative adverbs have a noun phrase or a sentence as object of
 -- comparison.
 
-    ComparAdvAdj  : (a : Boolean) -> CAdv -> A -> NPTyped a -> AdvTyped a ; -- more warmly than John
+    ComparAdvAdj  : (a : NPType) -> CAdv -> A -> NPTyped a -> AdvTyped a ; -- more warmly than John
     ComparAdvAdjS : CAdv -> A -> S  -> Adv  ; -- more warmly than he runs
 
 -- Adverbs can be modified by 'adadjectives', just like adjectives.
 
-    AdAdv  : (a : Boolean) -> AdA -> AdvTyped a -> AdvTyped a ;             -- very quickly
+    AdAdv  : (a : NPType) -> AdA -> AdvTyped a -> AdvTyped a ;             -- very quickly
 
 -- Like adverbs, adadjectives can be produced by adjectives.
 

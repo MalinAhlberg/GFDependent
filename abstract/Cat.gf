@@ -22,7 +22,7 @@ abstract Cat = Common -[Adv] ** {
 
   cat
 
-  Boolean ;
+  NPType ;
 --  NPSubject ;
 --  NPObject ;
 --  APSubject ;
@@ -30,10 +30,10 @@ abstract Cat = Common -[Adv] ** {
 --  AdvSubject ;
 --  AdvObject ;
   data 
-    Subject : Boolean ;
-    Object : Boolean ;
+    Subject : NPType ;
+    Object : NPType ;
   fun 
-    isObj : Boolean -> Boolean -> Boolean ;
+    isObj : NPType -> NPType -> NPType ;
     def isObj _      Object = Object ; 
     def isObj Object _      = Object ; 
     def isObj _       _     = Subject ; 
@@ -55,7 +55,7 @@ abstract Cat = Common -[Adv] ** {
 
  cat
   Adv ;
-  AdvTyped Boolean ;
+  AdvTyped NPType ;
 --2 Sentences and clauses
 
 -- Constructed in [Sentence Sentence.html], and also in
@@ -99,7 +99,7 @@ abstract Cat = Common -[Adv] ** {
 -- Constructed in [Adjective Adjective.html].
 
     AP ;               -- adjectival phrase                   e.g. "very warm"
-    APTyped Boolean ;
+    APTyped NPType ;
 
 --2 Nouns and noun phrases
 
@@ -112,14 +112,14 @@ abstract Cat = Common -[Adv] ** {
 
     CN ;     -- common noun (without determiner)    e.g. "red house"
     NP ;     -- noun phrase (subject or object)     e.g. "the red house"
-    NPTyped Boolean ;     -- noun phrase (subject or object)     e.g. "the red house"
-    PronTyped Boolean ;   -- personal pronoun                    e.g. "she"
+    NPTyped NPType ;     -- noun phrase (subject or object)     e.g. "the red house"
+    PronTyped NPType ;   -- personal pronoun                    e.g. "she"
     Pron ;   -- personal pronoun                    e.g. "she"
-    DetTyped  Boolean;    -- determiner phrase                   e.g. "those seven"
+    DetTyped  NPType;    -- determiner phrase                   e.g. "those seven"
     Det ;    -- determiner phrase                   e.g. "those seven"
     Predet ; -- predeterminer (prefixed Quant)      e.g. "all"
     Quant ;  -- quantifier ('nucleus' of Det)       e.g. "this/these"
-    QuantTyped Boolean ;  -- quantifier ('nucleus' of Det)       e.g. "this/these"
+    QuantTyped NPType ;  -- quantifier ('nucleus' of Det)       e.g. "this/these"
     Num ;    -- number determining element          e.g. "seven"
     Card ;   -- cardinal number                     e.g. "seven"
     Ord ;    -- ordinal number (used in Det)        e.g. "seventh"
