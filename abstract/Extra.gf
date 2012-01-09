@@ -53,18 +53,18 @@ abstract Extra = Cat ** {
   -- fronted/focal constructions, only for main clauses
 
   cat
-    Foc ;
+    Top ;
 
   fun
-    FocObj : NP  -> ClSlash -> Foc ;   -- her I love
-    FocAdv : Adv -> Cl      -> Foc ;   -- today I will sleep
-    FocAdV : AdV -> Cl      -> Foc ;   -- never will I sleep
-    FocAP  : AP  -> NP      -> Foc ;   -- green was the tree
-    FocNeg : Cl             -> Foc ;   -- not is he here
-    FocVP  : VP  -> NP      -> Foc ;   -- love her I do
-    FocVV  : VV -> VP -> NP -> Foc ;   -- to love her I want
+    TopObj : NP  -> ClSlash -> Top ;   -- her I love
+    TopAdv : Adv -> Cl      -> Top ;   -- today I will sleep
+    TopAdV : AdV -> Cl      -> Top ;   -- never will I sleep
+    TopAP  : AP  -> NP      -> Top ;   -- green was the tree
+    TopNeg : Cl             -> Top ;   -- not is he here
+    TopVP  : VP  -> NP      -> Top ;   -- love her I do
+    TopVV  : VV -> VP -> NP -> Top ;   -- to love her I want
     
-    UseFoc : Temp -> Pol -> Foc -> Utt ;
+    UseTop : Temp -> Pol -> Top -> Utt ;
 
   fun
     PartVP : VP -> AP ; -- (the man) looking at Mary

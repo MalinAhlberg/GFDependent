@@ -2,7 +2,7 @@
 -- Structures special for Swedish. These are not implemented in other
 -- Scandinavian languages.
 
-abstract ExtraSweAbs = ExtraScandAbs -[FocAP] ** {
+abstract ExtraSweAbs = ExtraScandAbs -[TopAP] ** {
 
 cat ReflNP ; 
     PronAD ; -- relational pronouns which can act like adjectives and
@@ -21,7 +21,7 @@ fun
   RelVS : S -> RelVSCl -> S ; -- hon sover, vilket vi vet
   RelSlashVS : Temp -> Pol -> VS -> NP -> RelVSCl ;  -- vilket vi vet
 
-  FocAP : Comp -> NP -> Foc ;
+  TopAP : Comp -> NP -> Top ;
 
   DetNP_utr : Det -> NP ; -- den här
 

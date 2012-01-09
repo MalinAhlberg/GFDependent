@@ -1,5 +1,5 @@
 --# -path=.:../scandinavian:../abstract:../common:prelude
-concrete ExtraSwe of ExtraSweAbs = ExtraScandSwe - [FocAdv] ,
+concrete ExtraSwe of ExtraSweAbs = ExtraScandSwe - [TopAdv] ,
                                    ParadigmsSwe - [nominative] **
  open CommonScand, ResSwe, ParamX, VerbSwe, Prelude, DiffSwe, StructuralSwe, MorphoSwe,
       NounSwe, Coordination, AdjectiveSwe, SentenceSwe, RelativeSwe in {
@@ -67,7 +67,7 @@ lin
 
 
 lin
-  FocVP vp np = {
+  TopVP vp np = {
       s = \\t,a,p =>
         let
           subj = np.s ! CommonScand.nominative ;
@@ -90,7 +90,7 @@ lin
   oper do_V : V = mkV "göra" "gör" "gör" "gjorde" "gjort" "gjord" ;
 
 lin
-  FocAP ap np    = 
+  TopAP ap np    = 
   {s = \\t,a,p => 
    let vp = UseComp ap ; 
        vps = vp.s ! VPFinite t a;
@@ -99,7 +99,7 @@ lin
     ++ negation ! p++ vps.inf };
 
 
-  FocVV vv vp np = 
+  TopVV vv vp np = 
   {s = \\t,a,p =>
     let vps = vp.s ! VPInfinit Simul ;
         vvp = UseV vv ;

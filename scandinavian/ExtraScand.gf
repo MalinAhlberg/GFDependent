@@ -94,24 +94,24 @@ incomplete concrete ExtraScand of ExtraScandAbs = CatScand **
     IAdvAdv adv = {s = hur_IAdv.s ++ adv.s} ;
 
   lincat
-    Foc = {s : STense => Anteriority => Polarity => Str} ;
+    Top = {s : STense => Anteriority => Polarity => Str} ;
 
   lin
   -- malin: not right np. a here
-    FocObj np cls = {
+    TopObj np cls = {
       s = \\t,a,p => cls.c2.s ++ np.s ! accusative ++ cls.s ! t ! a ! p ! Inv
       } ;
-    FocAdv adv cls = {
+    TopAdv adv cls = {
       s = \\t,a,p => adv.s ++ cls.s ! t ! a ! p ! Inv
       } ; 
-    FocAdV adv cls = {
+    TopAdV adv cls = {
       s = \\t,a,p => adv.s ++ cls.s ! t ! a ! p ! Inv
       } ; 
-    FocNeg cl = {
+    TopNeg cl = {
       s = \\t,a,p => (negation ! Neg) ++ cl.s ! t ! a ! p ! Inv
       } ;
     
-    UseFoc t p foc = {s = t.s ++ p.s ++ foc.s ! t.t ! t.a ! p.p} ;
+    UseTop t p foc = {s = t.s ++ p.s ++ foc.s ! t.t ! t.a ! p.p} ;
 
   oper NONEXIST : Str = "#¿@§X?X&%/" ;
 } 
