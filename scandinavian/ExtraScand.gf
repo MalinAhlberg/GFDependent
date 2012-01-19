@@ -92,8 +92,10 @@ incomplete concrete ExtraScand of ExtraScandAbs = CatScand **
     Top = {s : STense => Anteriority => Polarity => Str} ;
 
   lin
+    -- obs! cls.n3 added late, check that it works!
     TopObj np cls = {
       s = \\t,a,p => cls.c2.s ++ np.s ! (getNPerson cls.agr) ! accusative ++ cls.s ! t ! a ! p ! Inv
+                     ++ cls.n3 ! np.a 
       } ;
     TopAdv adv cls = {
       s = \\t,a,p => adv.s ! (getNPerson cls.agr) ++ cls.s ! t ! a ! p ! Inv
