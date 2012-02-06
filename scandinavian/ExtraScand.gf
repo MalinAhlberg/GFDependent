@@ -24,13 +24,17 @@ incomplete concrete ExtraScand of ExtraScandAbs = CatScand **
     StrandQuestSlash ip slash = {
       s = \\t,a,p => 
             let 
-              cls = slash.s ! t ! a ! p ;
+              cls = clsl ip slash t a p  ; 
               who = ip.s ! accusative
             in table {
               QDir   => who ++ cls ! Inv ++ slash.c2.s ;
               QIndir => who ++ cls ! Sub ++ slash.c2.s
               }
       } ;
+    oper clsl : IP -> ClSlash -> STense -> Anteriority -> Polarity -> (Order => Str) ;
+         clsl ip slash t a p = \\o => slash.s ! t ! a ! p ! o 
+                       ++ slash.n3 ! {g = ip.g ; n = ip.n ; p = P3} ;
+
 
   lincat
     VPI   = {s : VPIForm => Agr => Str} ;
