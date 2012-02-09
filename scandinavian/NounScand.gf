@@ -185,9 +185,11 @@ incomplete concrete NounScand of Noun =
       g = g ;
       isMod = cn.isMod
       } ;
-    ApposCN  cn np = let g = cn.g in {
-      s = \\n,d,c => cn.s ! n ! d ! Nom ++ np.s ! aNPerson ! NPNom ; --c
+    ApposCN  cn np = let g = cn.g in { -- must use case, to avoid overgeneration
+      s = \\n,d,c => cn.s ! n ! d ! Nom ++ np.s ! aNPerson ! npCase c n g ; --c
       g = g ;
       isMod = cn.isMod
       } ;
+    oper npCase : Case -> Number -> Gender -> NPForm = \c,n,g ->
+         case c of {Nom => NPNom ; Gen => NPPoss  (gennum (ngen2gen g) n) Gen} ;--};
 }
