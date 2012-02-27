@@ -26,12 +26,13 @@ abstract Conjunction = ConjunctionX - [BaseNP,ConsNP,BaseAP,ConsAP,BaseAdv,ConsA
     ConjCN   : Conj -> [CN] -> CN ;     -- "man and woman"
 
 -- special list constructors for the dependent types
-    BaseNP : (a,b : NPType) -> NPTyped a -> NPTyped b -> [NPTyped (isObj a b)] ;
-    ConsNP : (a,b : NPType) -> NPTyped a -> [NPTyped b] -> [NPTyped (isObj a b)] ;
-    BaseAdv : (a,b : NPType) -> AdvTyped a -> AdvTyped b -> [AdvTyped (isObj a b)] ;
-    ConsAdv : (a,b : NPType) -> AdvTyped a -> [AdvTyped b] -> [AdvTyped (isObj a b)] ;
-    BaseAP : (a,b : NPType) -> APTyped a -> APTyped b -> [APTyped (isObj a b)] ;
-    ConsAP : (a,b : NPType) -> APTyped a -> [APTyped b] -> [APTyped (isObj a b)] ;
+-- changed from (a,b...) ... (isObj a b) to avoid overgeneration. do we loose anything by this?
+    BaseNP : (a : NPType) -> NPTyped a -> NPTyped a -> [NPTyped a] ;
+    ConsNP : (a : NPType) -> NPTyped a -> [NPTyped a] -> [NPTyped a] ;
+    BaseAdv : (a : NPType) -> AdvTyped a -> AdvTyped a -> [AdvTyped a] ;
+    ConsAdv : (a : NPType) -> AdvTyped a -> [AdvTyped a] -> [AdvTyped a] ;
+    BaseAP : (a : NPType) -> APTyped a -> APTyped a -> [APTyped a] ;
+    ConsAP : (a : NPType) -> APTyped a -> [APTyped a] -> [APTyped a] ;
 
 --2 List constructors
 
